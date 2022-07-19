@@ -5,9 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 
 import { COLORS, SIZES, SHADOWS, assets } from '../constants';
 import { RectButton, CircleButton } from './Button';
+import { BotInfo, SubInfo, PendingTrans } from './SubInfo';
 
 const NFTCard = ({data}) => {
   const navigation = useNavigation();
+
+  //console.log(data.pendingTrans)
 
   return (
     <View style={{
@@ -19,7 +22,13 @@ const NFTCard = ({data}) => {
     }}>
 
       <View style={{ width: "100%", height: 100}}>
-
+        <BotInfo 
+          botName = {data.botName}
+          assetName = {data.assetName}
+          exchangeName = {data.exchangeName}
+          profit = {data.profit}
+          elapsedTime = {data.elapsedTime}
+        />
       </View>
 
       <View
@@ -31,7 +40,7 @@ const NFTCard = ({data}) => {
         }}
       >
 
-        <Text>NFTCard</Text>
+        <PendingTrans pendingTrans = {data.pendingTrans}/>
         <RectButton
             right={10} bottom={10}
             minWidth={120}

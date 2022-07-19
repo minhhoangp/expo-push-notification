@@ -112,7 +112,116 @@ return (
     </View>
 );
 };
-  
+
+export const PendingTrans = (props) => {
+    if (props.pendingTrans == true){
+        return (
+            <Text
+                style={{
+                fontFamily: FONTS.medium,
+                fontSize: SIZES.font,
+                color: COLORS.secondary,
+            }}>
+                1 PENDING TRANSACTION!
+            </Text>
+        )
+    } else {
+        return (
+            <Text
+                style={{
+                fontFamily: FONTS.medium,
+                fontSize: SIZES.font,
+                color: COLORS.secondary,
+            }}>
+            </Text>
+        )
+    }
+}
+
+export const BotName = ({botName}) => {
+    return (
+        <Text
+            style={{
+            fontFamily: FONTS.medium,
+            fontSize: SIZES.font,
+            color: COLORS.primary,
+        }}>
+            {botName}
+        </Text>
+    )
+}
+
+export const AssetName = ({assetName}) => {
+    return (
+        <Text
+            style={{
+            fontFamily: FONTS.medium,
+            fontSize: SIZES.font,
+            color: COLORS.primary,
+        }}>
+            {assetName}
+        </Text>
+    )
+}
+
+export const ExchangeName = ({exchangeName}) => {
+    return (
+        <Text
+            style={{
+            fontFamily: FONTS.medium,
+            fontSize: SIZES.font,
+            color: COLORS.primary,
+        }}>
+            {exchangeName}
+        </Text>
+    )
+}
+
+export const BotInfo = ({botName, assetName, exchangeName, profit, elapsedTime}) => {
+    return (
+        <View style={{ flexDirection: "row", justifyContent: "space-between"
+    }}>
+
+            <View style={{ flexDirection: "row"}}>
+                <Image
+                    source = {assets[assetName]}
+                    resizeMode ="contain"
+                    style = {{ width: 70, height: 70 }}
+                />
+
+                <View>
+                    <BotName botName = {botName}/>
+                    <AssetName assetName = {assetName}/>
+                    <ExchangeName exchangeName = {exchangeName}/>
+                </View>
+            </View>
+
+            <View>
+                <Text
+                    style={{
+                    fontFamily: FONTS.medium,
+                    fontSize: SIZES.font,
+                    color: COLORS.primary,
+                    }}
+                >
+                    {profit}
+                </Text>
+
+                <Text
+                    style={{
+                    fontFamily: FONTS.medium,
+                    fontSize: SIZES.font,
+                    color: COLORS.primary,
+                    }}
+                >
+                    {elapsedTime}
+                </Text>
+            </View>
+        </View>
+    );
+}
+
+
 export const SubInfo = () => {
 return (
     <View
@@ -122,10 +231,8 @@ return (
             marginTop: -SIZES.extraLarge,
             flexDirection: "row",
             justifyContent: "space-between",
-        }}
-    >
-    <People />
-    <EndDate />
+    }}>
+        <BotInfo />
     </View>
 );
 };
