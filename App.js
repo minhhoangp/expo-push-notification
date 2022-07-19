@@ -3,6 +3,14 @@ import * as Notifications from 'expo-notifications';
 import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, Button, Platform } from 'react-native';
 
+import {SafeAreaView, Flatlist} from 'react-native';
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { useFonts } from "expo-font";
+
+import Home from "./screens/Home";
+import Details from "./screens/Details";
+
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
@@ -10,6 +18,17 @@ Notifications.setNotificationHandler({
     shouldSetBadge: false,
   }),
 });
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: "transparent",
+  },
+};
+
+const Stack = createStackNavigator();
+
 
 export default function App() {
   const [expoPushToken, setExpoPushToken] = useState('');
@@ -36,26 +55,49 @@ export default function App() {
     };
   }, []);
 
+
+  const [loaded] = useFonts({
+    InterBold: require("./assets/fonts/Inter-Bold.ttf"),
+    InterSemiBold: require("./assets/fonts/Inter-SemiBold.ttf"),
+    InterMedium: require("./assets/fonts/Inter-Medium.ttf"),
+    InterRegular: require("./assets/fonts/Inter-Regular.ttf"),
+    InterLight: require("./assets/fonts/Inter-Light.ttf"),
+  });
+
+  if (!loaded) return null;
+
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'space-around',
-      }}>
-      <Text>Your expo push token: {expoPushToken}</Text>
-      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Title: {notification && notification.request.content.title} </Text>
-        <Text>Body: {notification && notification.request.content.body}</Text>
-        <Text>Data: {notification && JSON.stringify(notification.request.content.data)}</Text>
-      </View>
-      <Button
-        title="Press to Send Notification"
-        onPress={async () => {
-          await sendPushNotification(expoPushToken);
+    <NavigationContainer theme={theme}>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
         }}
-      />
-    </View>
+        initialRouteName="Home"
+      >
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Details" component={Details} />
+      </Stack.Navigator>
+    </NavigationContainer>
+
+    // <View
+    //   style={{
+    //     flex: 1,
+    //     alignItems: 'center',
+    //     justifyContent: 'space-around',
+    //   }}>
+    //   <Text>Your expo push token: {expoPushToken}</Text>
+    //   <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+    //     <Text>Title: {notification && notification.request.content.title} </Text>
+    //     <Text>Body: {notification && notification.request.content.body}</Text>
+    //     <Text>Data: {notification && JSON.stringify(notification.request.content.data)}</Text>
+    //   </View>
+    //   <Button
+    //     title="Press to Send Notification"
+    //     onPress={async () => {
+    //       await sendPushNotification(expoPushToken);
+    //     }}
+    //   />
+    // </View>
   );
 }
 
