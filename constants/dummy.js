@@ -8,6 +8,21 @@ const NFTData = [
     profit: "+2.3%",
     elapsedTime: "1h31m",
     pendingTrans: true,
+    transHistory: [
+      {
+        id: "BID-11",
+        method: "Jessica Tan",
+        price: 4.25,
+        volume: 10
+        date: "December 12, 2019 at 12:10 PM",
+      },
+      {
+        id: "BID-12",
+        method: "Jennifer Sia",
+        price: 10,
+        date: "December 27, 2019 at 1:50 PM",
+      },
+    ],
 
 
     id: "NFT-01",

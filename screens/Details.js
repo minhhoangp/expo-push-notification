@@ -2,12 +2,18 @@ import React from "react";
 import { View, Text, SafeAreaView, Image, StatusBar, FlatList } from "react-native";
 
 import {COLORS, SIZES, SHADOWS, FONTS, assets} from '../constants';
-import {RectButton, SubInfo, DetailsDesc, DetailsBid, FocusedStatusBar, CircleButton} from '../components';
-
+import {RectButton, DetailsDesc, TransactionHistory, FocusedStatusBar, CircleButton} from '../components';
+import {BotDetailedInfo, PendingWidget } from '../components/SubInfo'
 
 const DetailsHeader = ({data, navigation}) => (
-  <View style={{width:'100%', height:373}}>
-    
+  <View style={{width:'100%', height:100}}>
+
+    <Image
+      source={data.image}
+      resizeMode="cover"
+      style={{ width: "100%", height: 120 }}
+    />
+
     <CircleButton
       imgUrl={assets.left}
       handlePress={() => navigation.goBack()}
@@ -38,15 +44,13 @@ const Details = ({route, navigation}) => {
         }}
       >
 
-
-
         <RectButton minWidth={170} fontSize={SIZES.large} {...SHADOWS.dark} />
 
       </View>
 
       <FlatList
           data={data.bids}
-          renderItem={({ item }) => <DetailsBid bid={item} />}
+          renderItem={({ item }) => <TransactionHistory bid={item} />}
           keyExtractor={(item) => item.id}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{
@@ -55,7 +59,20 @@ const Details = ({route, navigation}) => {
           ListHeaderComponent={() => (
             <React.Fragment>
               <DetailsHeader data = {data} navigation = {navigation}/>
-              <SubInfo/>
+              <BotDetailedInfo
+                botName = {data.botName}
+                assetName = {data.assetName}
+                exchangeName = {data.exchangeName}
+                profit = {data.profit}
+                elapsedTime = {data.elapsedTime}
+              />
+
+              <PendingWidget 
+                timeRemaining = {data.botName}
+                checklist = {data.assetName}
+                transInfo = {data.exchangeName}
+              />
+
             </React.Fragment>
           )}
       />

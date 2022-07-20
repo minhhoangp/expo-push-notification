@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, Text } from "react-native";
+import { View, Image, Text , StyleSheet} from "react-native";
 
 import { SIZES, FONTS, COLORS, SHADOWS, assets } from "../constants";
 
@@ -113,6 +113,9 @@ return (
 );
 };
 
+
+
+
 export const PendingTrans = (props) => {
     if (props.pendingTrans == true){
         return (
@@ -179,8 +182,7 @@ export const ExchangeName = ({exchangeName}) => {
 
 export const BotInfo = ({botName, assetName, exchangeName, profit, elapsedTime}) => {
     return (
-        <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: -150
-        }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: -150}}>
 
             <View style={{ flexDirection: "row"}}>
                 <Image
@@ -222,7 +224,7 @@ export const BotInfo = ({botName, assetName, exchangeName, profit, elapsedTime})
 }
 
 
-export const SubInfo = () => {
+export const BotDetailedInfo = ({botName, assetName, exchangeName, profit, elapsedTime}) => {
 return (
     <View
         style={{
@@ -230,9 +232,79 @@ return (
             paddingHorizontal: SIZES.font,
             marginTop: -SIZES.extraLarge,
             flexDirection: "row",
-            justifyContent: "space-between",
+            justifyContent: "space-between", 
     }}>
-        <BotInfo />
+
+        <View style={{ flexDirection: "row", justifyContent: "space-between"}}>
+
+            <View style={{ flexDirection: "row"}}>
+                <Image
+                    source = {assets[assetName]}
+                    resizeMode ="contain"
+                    style = {{ width: 70, height: 70 }}
+                />
+
+                <View>
+                    <BotName botName = {botName}/>
+                    <AssetName assetName = {assetName}/>
+                    <ExchangeName exchangeName = {exchangeName}/>
+                </View>
+            </View>
+
+            <View>
+                <Text
+                    style={{
+                    fontFamily: FONTS.medium,
+                    fontSize: SIZES.font,
+                    color: COLORS.primary,
+                    }}
+                >
+                    {profit}
+                </Text>
+
+                <Text
+                    style={{
+                    fontFamily: FONTS.medium,
+                    fontSize: SIZES.font,
+                    color: COLORS.primary,
+                    }}
+                >
+                    {elapsedTime}
+                </Text>
+            </View>
+        </View>
+
     </View>
 );
 };
+
+
+const style = StyleSheet.create({
+    pendingWidget:{
+        backgroundColor: '#ffcc99',
+        padding: 15,
+        borderRadius: 10
+    },
+
+    botDetail:{
+        backgroundColor: 'FFF',
+        padding: 15,
+        borderRadius: 10
+    }
+})
+
+export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
+    return (
+        <React.Fragment>
+
+            <Text>Pending Transaction</Text>
+
+            <View style={style.pendingWidget}>
+                <Text>SOME INFO HERE</Text>
+            </View>
+
+
+            <Text>Past Transactions</Text>
+        </React.Fragment>
+    )
+}
