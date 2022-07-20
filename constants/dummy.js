@@ -10,19 +10,41 @@ const NFTData = [
     pendingTrans: true,
     transHistory: [
       {
-        id: "BID-11",
-        method: "Jessica Tan",
-        price: 4.25,
-        volume: 10
-        date: "December 12, 2019 at 12:10 PM",
+        id: "1",
+
+        contract1: "long",
+        position1: 2,
+        price1: 70.68,
+        time1:"1:50:21 PM",
+
+        contract2: null,
+        position2: null,
+        price2: null,
+        time2: null
       },
       {
-        id: "BID-12",
-        method: "Jennifer Sia",
-        price: 10,
-        date: "December 27, 2019 at 1:50 PM",
+        id: "2",
+
+        contract1: "short",
+        position1: 3,
+        price1: 77.23,
+        time1:"12:10:01 PM",
+
+        contract2: "short",
+        position2: 3,
+        price2: 72.13,
+        time2: "01:00:59 PM"
       },
     ],
+
+    pendingInfo:{
+      checklist: {
+        one: "20 Moving Avarage",
+        two: "RSI",
+        three: "On-Balance Volume"
+      },
+      timeRemaining: "20"
+    },
 
 
     id: "NFT-01",
@@ -63,6 +85,23 @@ const NFTData = [
     profit: "+2.3%",
     elapsedTime: "1h31m",
     pendingTrans: false,
+    transHistory: [
+      {
+        id: "1",
+
+        contract1: "long",
+        position1: 2,
+        price1: 70.68,
+        time1:"1:50:21 PM",
+
+        contract2: null,
+        position2: null,
+        price2: null,
+        time2: null
+      },
+    ],
+
+    pendingInfo: null,
 
     id: "NFT-02",
     name: "Green Coins",
@@ -88,6 +127,32 @@ const NFTData = [
     profit: "+2.3%",
     elapsedTime: "1h31m",
     pendingTrans: false,
+    transHistory: [
+      {
+        contract1: "long",
+        position1: 2,
+        price1: 70.68,
+        time1:"1:50:21 PM",
+
+        contract2: null,
+        position2: null,
+        price2: null,
+        time2: null
+      },
+      {
+        contract1: "short",
+        position1: 3,
+        price1: 77.23,
+        time1:"12:10:01 PM",
+
+        contract2: "short",
+        position2: 3,
+        price2: 72.13,
+        time2: "01:00:59 PM"
+      },
+    ],
+    
+    pendingInfo: null,
 
     id: "NFT-03",
     name: "NFT coins race",
@@ -120,6 +185,43 @@ const NFTData = [
     profit: "-4.7%",
     elapsedTime: "1h31m",
     pendingTrans: true,
+    transHistory: [
+      {
+        id: "1",
+
+        contract1: "long",
+        position1: 2,
+        price1: 70.68,
+        time1:"1:50:21 PM",
+
+        contract2: null,
+        position2: null,
+        price2: null,
+        time2: null
+      },
+      {
+        id: "2",
+
+        contract1: "short",
+        position1: 3,
+        price1: 77.23,
+        time1:"12:10:01 PM",
+
+        contract2: "short",
+        position2: 3,
+        price2: 72.13,
+        time2: "01:00:59 PM"
+      },
+    ],
+
+    pendingInfo:{
+      checklist: {
+        one: "20 Moving Avarage",
+        two: "RSI",
+        three: "On-Balance Volume"
+      },
+      timeRemaining: "59"
+    },
 
     id: "NFT-04",
     name: "Nifty NFT",
@@ -165,7 +267,11 @@ const NFTData = [
     exchangeName: "BINANCE",
     profit: "+2.3%",
     elapsedTime: "1h31m",
-    pendingTrans: true,
+    pendingTrans: false,
+    transHistory: [
+      null
+    ],
+
 
     id: "NFT-05",
     name: "Colorful circles",

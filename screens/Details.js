@@ -49,8 +49,8 @@ const Details = ({route, navigation}) => {
       </View>
 
       <FlatList
-          data={data.bids}
-          renderItem={({ item }) => <TransactionHistory bid={item} />}
+          data={data.transHistory}
+          renderItem={({ item }) => <TransactionHistory transHistory={item} />}
           keyExtractor={(item) => item.id}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{
