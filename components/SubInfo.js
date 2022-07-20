@@ -179,8 +179,8 @@ export const ExchangeName = ({exchangeName}) => {
 
 export const BotInfo = ({botName, assetName, exchangeName, profit, elapsedTime}) => {
     return (
-        <View style={{ flexDirection: "row", justifyContent: "space-between"
-    }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: -150
+        }}>
 
             <View style={{ flexDirection: "row"}}>
                 <Image

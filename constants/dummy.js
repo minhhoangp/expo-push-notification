@@ -3,7 +3,7 @@ import assets from "./assets";
 const NFTData = [
   {
     botName: "BOT 01",
-    assetName: "eth",
+    assetName: "luna2",
     exchangeName: "BINANCE",
     profit: "+2.3%",
     elapsedTime: "1h31m",
@@ -16,7 +16,7 @@ const NFTData = [
     price: 4.25,
     description:
       "The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural.",
-    image: assets.nft01,
+    image: assets.binanceLogo,
     bids: [
       {
         id: "BID-11",
@@ -43,7 +43,7 @@ const NFTData = [
   },
   {
     botName: "BOT 02",
-    assetName: "eth",
+    assetName: "bitcoin",
     exchangeName: "BINANCE",
     profit: "+2.3%",
     elapsedTime: "1h31m",
@@ -55,7 +55,7 @@ const NFTData = [
     price: 7.25,
     description:
       "The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. Nulla sed velit erat vitae leo sem inceptos diam fames arcu hendrerit, quis ultrices in eleifend posuere ipsum conubia porttitor felis.",
-    image: assets.nft02,
+    image: assets.bybitLogo,
     bids: [
       {
         id: "BID-21",
@@ -68,7 +68,7 @@ const NFTData = [
   },
   {
     botName: "BOT 03",
-    assetName: "eth",
+    assetName: "doge",
     exchangeName: "BINANCE",
     profit: "+2.3%",
     elapsedTime: "1h31m",
@@ -80,7 +80,7 @@ const NFTData = [
     price: 95.25,
     description:
       "The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. Lorem ipsum dolor sit amet consectetur adipiscing elit consequat accumsan sapien, lectus convallis malesuada odio curae habitasse dignissim nascetur. Nulla sed velit erat vitae leo sem inceptos diam fames arcu hendrerit, quis ultrices in eleifend posuere ipsum conubia porttitor felis. Lorem ipsum dolor sit amet consectetur adipiscing elit consequat accumsan sapien, lectus convallis malesuada odio curae habitasse dignissim nascetur. Nulla sed velit erat vitae leo sem inceptos diam fames arcu hendrerit, quis ultrices in eleifend posuere ipsum conubia porttitor felis.",
-    image: assets.nft03,
+    image: assets.huobiLogo,
     bids: [
       {
         id: "BID-31",

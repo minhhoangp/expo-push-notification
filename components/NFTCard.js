@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View, Image, Text } from 'react-native';
 import React from 'react';
 
 import { useNavigation } from '@react-navigation/native';
@@ -10,8 +10,6 @@ import { BotInfo, SubInfo, PendingTrans } from './SubInfo';
 const NFTCard = ({data}) => {
   const navigation = useNavigation();
 
-  //console.log(data.pendingTrans)
-
   return (
     <View style={{
       backgroundColor: COLORS.white,
@@ -22,6 +20,19 @@ const NFTCard = ({data}) => {
     }}>
 
       <View style={{ width: "100%", height: 100}}>
+        <Image
+            source={data.image}
+            resizeMode="cover"
+            style={{
+              width: "80%",
+              height: "150%",
+              borderTopLeftRadius: SIZES.font,
+              borderTopRightRadius: SIZES.font,
+              marginLeft: 35
+            }}
+        />
+
+
         <BotInfo 
           botName = {data.botName}
           assetName = {data.assetName}
