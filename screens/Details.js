@@ -58,7 +58,9 @@ const Details = ({route, navigation}) => {
           }}
           ListHeaderComponent={() => (
             <React.Fragment>
+              
               <DetailsHeader data = {data} navigation = {navigation}/>
+
               <BotDetailedInfo
                 botName = {data.botName}
                 assetName = {data.assetName}
@@ -67,11 +69,12 @@ const Details = ({route, navigation}) => {
                 elapsedTime = {data.elapsedTime}
               />
 
+              {data.pendingTrans && 
               <PendingWidget 
                 timeRemaining = {data.botName}
-                checklist = {data.assetName}
+                checklist = {data.pendingInfo.checklist}
                 transInfo = {data.exchangeName}
-              />
+              />}
 
             </React.Fragment>
           )}

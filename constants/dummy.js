@@ -8,6 +8,7 @@ const NFTData = [
     profit: "+2.3%",
     elapsedTime: "1h31m",
     pendingTrans: true,
+    historyicalRecord: true,
     transHistory: [
       {
         id: "1",
@@ -38,11 +39,11 @@ const NFTData = [
     ],
 
     pendingInfo:{
-      checklist: {
-        one: "20 Moving Avarage",
-        two: "RSI",
-        three: "On-Balance Volume"
-      },
+      checklist: [
+        {indicator: "20 Moving Avarage"},
+        {indicator: "RSI"},
+        {indicator: "On-Balance Volume"}
+      ],
       timeRemaining: "20"
     },
 
@@ -85,6 +86,7 @@ const NFTData = [
     profit: "+2.3%",
     elapsedTime: "1h31m",
     pendingTrans: false,
+    historyicalRecord: true,
     transHistory: [
       {
         id: "1",
@@ -127,6 +129,7 @@ const NFTData = [
     profit: "+2.3%",
     elapsedTime: "1h31m",
     pendingTrans: false,
+    historyicalRecord: true,
     transHistory: [
       {
         contract1: "long",
@@ -185,6 +188,7 @@ const NFTData = [
     profit: "-4.7%",
     elapsedTime: "1h31m",
     pendingTrans: true,
+    historyicalRecord: true,
     transHistory: [
       {
         id: "1",
@@ -215,11 +219,11 @@ const NFTData = [
     ],
 
     pendingInfo:{
-      checklist: {
-        one: "20 Moving Avarage",
-        two: "RSI",
-        three: "On-Balance Volume"
-      },
+      checklist: [
+        {indicator: "20 Moving Avarage"},
+        {indicator: "RSI"},
+        {indicator: "On-Balance Volume"}
+      ],
       timeRemaining: "59"
     },
 
@@ -268,6 +272,7 @@ const NFTData = [
     profit: "+2.3%",
     elapsedTime: "1h31m",
     pendingTrans: false,
+    historyicalRecord: false,
     transHistory: [
       null
     ],

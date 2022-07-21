@@ -290,7 +290,20 @@ const style = StyleSheet.create({
         backgroundColor: 'FFF',
         padding: 15,
         borderRadius: 10
+    }, 
+
+    pendingChecklist:{
+        flexDirection: "row", 
+    },
+
+    checklistIcon:{
+        width: 20, 
+        height: 20, 
+        backgroundColor: "#55BCF6",
+        opacity: 0.4, 
+        borderRadius: 5
     }
+
 })
 
 export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
@@ -300,7 +313,13 @@ export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
             <Text>Pending Transaction</Text>
 
             <View style={style.pendingWidget}>
-                <Text>SOME INFO HERE</Text>
+                {checklist.map(a=>{
+                    return  <View style={style.pendingChecklist}>
+                                <View style={style.checklistIcon}></View>
+                                <Text>{a.indicator}</Text>
+                            </View>
+                })}
+            
             </View>
 
 
