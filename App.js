@@ -1,15 +1,15 @@
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Text, View, Button, Platform } from 'react-native';
 
-import {SafeAreaView, Flatlist} from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 
 import Home from "./screens/Home";
 import Details from "./screens/Details";
+
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -78,6 +78,8 @@ export default function App() {
         <Stack.Screen name="Details" component={Details} />
       </Stack.Navigator>
     </NavigationContainer>
+
+
 
     // <View
     //   style={{

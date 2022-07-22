@@ -1,10 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import { View, Text, SafeAreaView, Image, StatusBar, FlatList} from "react-native";
 import { ScrollView } from 'react-native-virtualized-view';
 
 import {COLORS, SIZES, SHADOWS, FONTS, assets} from '../constants';
 import {RectButton, DetailsDesc, TransactionHistory, FocusedStatusBar, CircleButton} from '../components';
-import {BotDetailedInfo, PendingWidget } from '../components/SubInfo'
+import {BotDetailedInfo, PendingWidget, PendingTrans} from '../components/SubInfo'
+
+import { UserContext } from "../helper/Context";
+import { PendingTransContext } from "../helper/Context";
 
 const DetailsHeader = ({data, navigation}) => (
   <View style={{width:'100%', height:100}}>
@@ -26,14 +29,16 @@ const DetailsHeader = ({data, navigation}) => (
 )
 
 
-
 const Details = ({route, navigation}) => {
   const {data} = route.params;
+  console.log("some thing " + data.pendingTrans)
 
   return (
     <SafeAreaView style={{flex: 1}}>
       <ScrollView>
-        
+
+        <PendingTrans pendingStatus = {data.pendingTrans}/>
+
         <DetailsHeader data = {data} navigation = {navigation}/>
 
         <BotDetailedInfo
@@ -56,6 +61,7 @@ const Details = ({route, navigation}) => {
         <TransactionHistory 
           transHistory = {data.transHistory}
         />}
+
 
       </ScrollView>
 

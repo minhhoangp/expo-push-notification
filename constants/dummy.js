@@ -44,7 +44,7 @@ const NFTData = [
         {indicator: "RSI", id: 2},
         {indicator: "On-Balance Volume", id: 3}
       ],
-      timeRemaining: "20"
+      timeRemaining: 39
     },
 
 
@@ -228,7 +228,7 @@ const NFTData = [
         {indicator: "RSI", id: 2},
         {indicator: "On-Balance Volume", id: 3}
       ],
-      timeRemaining: "59"
+      timeRemaining: 59
     },
 
     id: "NFT-04",

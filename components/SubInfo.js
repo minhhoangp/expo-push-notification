@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import { View, Image, Text , StyleSheet} from "react-native";
 
 import { SIZES, FONTS, COLORS, SHADOWS, assets } from "../constants";
+import { RectButton, CircleButton } from './Button';
 
+import { PendingTransContext } from "../helper/Context";
 
 export const NFTTitle = ({ title, subTitle, titleSize, subTitleSize }) => {
     return (
@@ -113,11 +115,11 @@ return (
 );
 };
 
+export const PendingTrans = ({pendingStatus}) => {
+    const {timer} = useContext(PendingTransContext)
+    console.log("timer " + timer)
 
-
-
-export const PendingTrans = (props) => {
-    if (props.pendingTrans == true){
+    if (pendingStatus == true){
         return (
             <Text
                 style={{
@@ -125,7 +127,7 @@ export const PendingTrans = (props) => {
                 fontSize: SIZES.font,
                 color: COLORS.secondary,
             }}>
-                1 PENDING TRANSACTION!
+               PENDING TRANS: 0: {timer}
             </Text>
         )
     } else {
@@ -223,7 +225,6 @@ export const BotInfo = ({botName, assetName, exchangeName, profit, elapsedTime})
     );
 }
 
-
 export const BotDetailedInfo = ({botName, assetName, exchangeName, profit, elapsedTime}) => {
 return (
     <View
@@ -278,12 +279,14 @@ return (
 );
 };
 
-
 const style = StyleSheet.create({
     pendingWidget:{
         backgroundColor: '#ffcc99',
         padding: 15,
-        borderRadius: 10
+        borderRadius: 10,
+
+        flexDirection: "row",
+        justifyContent: "space-between"
     },
 
     botDetail:{
@@ -306,7 +309,6 @@ const style = StyleSheet.create({
 
 })
 
-
 export const IndicatorChecklist = ({checklist}) => {
     return  <React.Fragment>
 
@@ -321,7 +323,6 @@ export const IndicatorChecklist = ({checklist}) => {
 
 }
 
-
 export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
     return (
         <React.Fragment>
@@ -329,9 +330,23 @@ export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
             <Text>Pending Transaction</Text>
 
             <View style = {style.pendingWidget}>
-                <IndicatorChecklist checklist = {checklist}/>
+                
+                <View>
+                    <IndicatorChecklist checklist = {checklist}/>
+                </View>
+
+                <View>
+                    
+                
+
+                    <RectButton
+                        handlePress={() => console.log("hello")}
+                    />
+                </View>
+                
+
             </View>
-            
+
         </React.Fragment>
     )
 }
