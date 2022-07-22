@@ -1,5 +1,6 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, FlatList, StyleSheet } from 'react-native'
 import React from 'react'
+import { SIZES, FONTS, COLORS, SHADOWS, assets } from "../constants";
 
 const style = StyleSheet.create({
   
@@ -24,19 +25,45 @@ const style = StyleSheet.create({
 
 })
 
-const TransactionHistory = ({transHistory}) => {
+
+
+const Pair = ({pairData}) => {
   return (
-    <View style={style.historyPair}>
+    <React.Fragment>
+      <View style={style.historyPair}>
 
       <View style = {style.contract1}>
-        <Text>contract1 is {transHistory.contract1}</Text>
+        <Text>contract1 is {pairData.contract1}</Text>
       </View>
 
       <View style = {style.contract2}>
-        <Text>contract2 is {transHistory.contract2}</Text>
+        <Text>contract2 is {pairData.contract2}</Text>
       </View>
-  
-    </View>
+
+      </View>
+
+    </React.Fragment>
+  )
+} 
+
+
+
+const TransactionHistory = ({transHistory}) => {
+  return (
+    <React.Fragment>
+      
+      <Text>Past Transactions</Text>
+
+      {<FlatList
+        data={transHistory}
+        renderItem={({ item }) => <Pair pairData={item} />}
+        keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingBottom: SIZES.extraLarge * 3}}
+      />}
+
+    </React.Fragment>
   )
 }
 

@@ -292,11 +292,11 @@ const style = StyleSheet.create({
         borderRadius: 10
     }, 
 
-    pendingChecklist:{
+    indicator:{
         flexDirection: "row", 
     },
 
-    checklistIcon:{
+    tickIcon:{
         width: 20, 
         height: 20, 
         backgroundColor: "#55BCF6",
@@ -306,24 +306,32 @@ const style = StyleSheet.create({
 
 })
 
+
+export const IndicatorChecklist = ({checklist}) => {
+    return  <React.Fragment>
+
+                {checklist.map(item=>{
+                    return  <View style={style.indicator} key = {item.id}>
+                                <View style={style.tickIcon}></View>
+                                <Text>{item.indicator}</Text>
+                            </View>
+                })}
+        
+            </React.Fragment>
+
+}
+
+
 export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
     return (
         <React.Fragment>
 
             <Text>Pending Transaction</Text>
 
-            <View style={style.pendingWidget}>
-                {checklist.map(a=>{
-                    return  <View style={style.pendingChecklist}>
-                                <View style={style.checklistIcon}></View>
-                                <Text>{a.indicator}</Text>
-                            </View>
-                })}
-            
+            <View style = {style.pendingWidget}>
+                <IndicatorChecklist checklist = {checklist}/>
             </View>
-
-
-            <Text>Past Transactions</Text>
+            
         </React.Fragment>
     )
 }

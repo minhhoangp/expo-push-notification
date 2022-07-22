@@ -2,26 +2,25 @@ import React, { useState } from "react";
 import { NFTCard, HomeHeader, FocusedStatusBar } from "../components";
 
 import { COLORS, NFTData,  } from "../constants";
-import { View, Text, SafeAreaView, FlatList } from "react-native";
+import { View, Text, SafeAreaView, FlatList, ScrollView} from "react-native";
 
 const Home = () => {
 
     return (
         <SafeAreaView style={{flex : 1}}>
+            <ScrollView>
+
             <FocusedStatusBar background={COLORS.primary} />
 
-            <View style={{flex: 1}}>
-                <View style={{zIndex: 0}}>
 
-                    <FlatList
-                        data = {NFTData}
-                        renderItem = { ({item}) => <NFTCard data = {item} /> }
-                        keyExtractor = {(item) => item.id}
-                        showsVerticalScrollIndicator = {false}
-                        ListHeaderComponent = {<HomeHeader/>}
-                    />
-                </View>
-            </View>
+                <HomeHeader/>
+
+                {NFTData.map(item=>{
+                    return  <NFTCard data = {item} key = {item.id}/>
+                })}
+
+            </ScrollView>
+
 
             <View
                 style={{

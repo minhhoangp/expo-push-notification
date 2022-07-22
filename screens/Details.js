@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, SafeAreaView, Image, StatusBar, FlatList } from "react-native";
+import { View, Text, SafeAreaView, Image, StatusBar, FlatList} from "react-native";
+import { ScrollView } from 'react-native-virtualized-view';
 
 import {COLORS, SIZES, SHADOWS, FONTS, assets} from '../constants';
 import {RectButton, DetailsDesc, TransactionHistory, FocusedStatusBar, CircleButton} from '../components';
@@ -31,54 +32,32 @@ const Details = ({route, navigation}) => {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View
-        style={{
-          width: "100%",
-          position: "absolute",
-          bottom: 0,
-          paddingVertical: SIZES.font,
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "rgba(255,255,255,0.5)",
-          zIndex: 1,
-        }}
-      >
+      <ScrollView>
+        
+        <DetailsHeader data = {data} navigation = {navigation}/>
 
-        <RectButton minWidth={170} fontSize={SIZES.large} {...SHADOWS.dark} />
+        <BotDetailedInfo
+          botName = {data.botName}
+          assetName = {data.assetName}
+          exchangeName = {data.exchangeName}
+          profit = {data.profit}
+          elapsedTime = {data.elapsedTime}
+        />
 
-      </View>
+        {data.pendingTrans && 
+        <PendingWidget 
+          timeRemaining = {data.botName}
+          checklist = {data.pendingInfo.checklist}
+          transInfo = {data.exchangeName}
+        />}
 
-      <FlatList
-          data={data.transHistory}
-          renderItem={({ item }) => <TransactionHistory transHistory={item} />}
-          keyExtractor={(item) => item.id}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{
-            paddingBottom: SIZES.extraLarge * 3,
-          }}
-          ListHeaderComponent={() => (
-            <React.Fragment>
-              
-              <DetailsHeader data = {data} navigation = {navigation}/>
 
-              <BotDetailedInfo
-                botName = {data.botName}
-                assetName = {data.assetName}
-                exchangeName = {data.exchangeName}
-                profit = {data.profit}
-                elapsedTime = {data.elapsedTime}
-              />
+        {data.historyicalRecord && 
+        <TransactionHistory 
+          transHistory = {data.transHistory}
+        />}
 
-              {data.pendingTrans && 
-              <PendingWidget 
-                timeRemaining = {data.botName}
-                checklist = {data.pendingInfo.checklist}
-                transInfo = {data.exchangeName}
-              />}
-
-            </React.Fragment>
-          )}
-      />
+      </ScrollView>
 
     </SafeAreaView>
   );

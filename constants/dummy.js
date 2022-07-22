@@ -40,9 +40,9 @@ const NFTData = [
 
     pendingInfo:{
       checklist: [
-        {indicator: "20 Moving Avarage"},
-        {indicator: "RSI"},
-        {indicator: "On-Balance Volume"}
+        {indicator: "20 Moving Avarage", id: 1},
+        {indicator: "RSI", id: 2},
+        {indicator: "On-Balance Volume", id: 3}
       ],
       timeRemaining: "20"
     },
@@ -132,6 +132,8 @@ const NFTData = [
     historyicalRecord: true,
     transHistory: [
       {
+        id: "1",
+
         contract1: "long",
         position1: 2,
         price1: 70.68,
@@ -143,6 +145,8 @@ const NFTData = [
         time2: null
       },
       {
+        id: "2",
+
         contract1: "short",
         position1: 3,
         price1: 77.23,
@@ -220,9 +224,9 @@ const NFTData = [
 
     pendingInfo:{
       checklist: [
-        {indicator: "20 Moving Avarage"},
-        {indicator: "RSI"},
-        {indicator: "On-Balance Volume"}
+        {indicator: "20 Moving Avarage", id: 1},
+        {indicator: "RSI", id: 2},
+        {indicator: "On-Balance Volume", id: 3}
       ],
       timeRemaining: "59"
     },
