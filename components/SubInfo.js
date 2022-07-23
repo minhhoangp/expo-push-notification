@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useState, useRef, useEffect} from "react";
 import { View, Image, Text , StyleSheet} from "react-native";
 
 import { SIZES, FONTS, COLORS, SHADOWS, assets } from "../constants";
@@ -324,6 +324,26 @@ export const IndicatorChecklist = ({checklist}) => {
 }
 
 export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
+
+    const [timer, setTimer] = useState(timeRemaining);
+
+    const intervalRef = useRef(); // Add a ref to store the interval id
+  
+    useEffect(() => {
+      intervalRef.current = setInterval(() => {
+        setTimer((t) => t - 1);
+      }, 1000);
+      return () => clearInterval(intervalRef.current);
+    }, []);
+  
+    // Add a listener to `timeLeft`
+    useEffect(() => {
+      if (timer <= 0) {
+        clearInterval(intervalRef.current);
+      }
+    }, [timer]);
+
+
     return (
         <React.Fragment>
 
@@ -337,6 +357,7 @@ export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
 
                 <View>
                     
+                    <Text>Timer: {timer}</Text>
                 
 
                     <RectButton

@@ -31,7 +31,6 @@ const DetailsHeader = ({data, navigation}) => (
 
 const Details = ({route, navigation}) => {
   const {data} = route.params;
-  console.log("some thing " + data.pendingTrans)
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -51,7 +50,7 @@ const Details = ({route, navigation}) => {
 
         {data.pendingTrans && 
         <PendingWidget 
-          timeRemaining = {data.botName}
+          timeRemaining = {route.params.timer}
           checklist = {data.pendingInfo.checklist}
           transInfo = {data.exchangeName}
         />}
