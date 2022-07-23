@@ -6,7 +6,7 @@ import huobiLogo from "../assets/images/huobiLogo.png";
 import bitcoin from "../assets/images/bitcoin.png";
 import doge from "../assets/images/doge.png";
 import luna2 from "../assets/images/luna2.png";
-
+import tick from "../assets/images/tick.png"
 
 import badge from "../assets/icons/badge.png";
 import eth from "../assets/icons/eth.png";
@@ -35,7 +35,7 @@ export default {
   bitcoin,
   doge,
   luna2,
-
+  tick,
 
   badge,
   eth,

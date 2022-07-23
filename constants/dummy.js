@@ -11,20 +11,40 @@ const NFTData = [
     historyicalRecord: true,
     transHistory: [
       {
+        id: "4",
+        type: "single",
+
+        contract1: "long",
+        position1: 2,
+        price1: 70.68,
+        time1:"1:50:21 PM",
+      },
+      {
         id: "1",
+        type: "complete",
 
         contract1: "long",
         position1: 2,
         price1: 70.68,
         time1:"1:50:21 PM",
 
-        contract2: null,
-        position2: null,
-        price2: null,
-        time2: null
+        contract2: "long",
+        position2: 2,
+        price2: 72.68,
+        time2:"1:51:21 PM",
       },
       {
         id: "2",
+        type: "rejected",
+
+        contract1: "long",
+        position1: 2,
+        price1: 70.68,
+        time1:"1:50:21 PM",
+      },
+      {
+        id: "3",
+        type: "complete",
 
         contract1: "short",
         position1: 3,
@@ -35,7 +55,7 @@ const NFTData = [
         position2: 3,
         price2: 72.13,
         time2: "01:00:59 PM"
-      },
+      }
     ],
 
     pendingInfo:{

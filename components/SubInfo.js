@@ -2,7 +2,7 @@ import React, {useContext, useState, useRef, useEffect} from "react";
 import { View, Image, Text , StyleSheet} from "react-native";
 
 import { SIZES, FONTS, COLORS, SHADOWS, assets } from "../constants";
-import { RectButton, CircleButton } from './Button';
+import { ApprovePendButton, CircleButton } from './Button';
 
 import { PendingTransContext } from "../helper/Context";
 
@@ -117,7 +117,6 @@ return (
 
 export const PendingTrans = ({pendingStatus}) => {
     const {timer} = useContext(PendingTransContext)
-    console.log("timer " + timer)
 
     if (pendingStatus == true){
         return (
@@ -284,6 +283,7 @@ const style = StyleSheet.create({
         backgroundColor: '#ffcc99',
         padding: 15,
         borderRadius: 10,
+        marginBottom: SIZES.font,
 
         flexDirection: "row",
         justifyContent: "space-between"
@@ -304,22 +304,39 @@ const style = StyleSheet.create({
         height: 20, 
         backgroundColor: "#55BCF6",
         opacity: 0.4, 
-        borderRadius: 5
+        borderRadius: 5,
+
+        
+    },
+
+    widgetTitle:{
+        fontFamily: FONTS.semiBold, 
+        fontSize: SIZES.medium, 
+        color: COLORS.primary, 
+        marginBottom: SIZES.base,
+        marginTop: SIZES.small
     }
 
 })
 
 export const IndicatorChecklist = ({checklist}) => {
-    return  <React.Fragment>
+    return  (
+        <React.Fragment>
 
-                {checklist.map(item=>{
-                    return  <View style={style.indicator} key = {item.id}>
-                                <View style={style.tickIcon}></View>
-                                <Text>{item.indicator}</Text>
-                            </View>
-                })}
-        
-            </React.Fragment>
+            {checklist.map(item=>{
+                return  (
+                <View style={style.indicator} key = {item.id}>
+                    <Image
+                        source={assets.tick}
+                        resizeMode="contain"
+                        style={{ width: 20, height: 20 }}
+                    />
+                    <Text>{item.indicator}</Text>
+                </View>)
+            })}
+    
+        </React.Fragment>
+    )
 
 }
 
@@ -347,7 +364,7 @@ export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
     return (
         <React.Fragment>
 
-            <Text>Pending Transaction</Text>
+            <Text style = {style.widgetTitle}>Pending Transaction</Text>
 
             <View style = {style.pendingWidget}>
                 
@@ -360,7 +377,7 @@ export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
                     <Text>Timer: {timer}</Text>
                 
 
-                    <RectButton
+                    <ApprovePendButton
                         handlePress={() => console.log("hello")}
                     />
                 </View>

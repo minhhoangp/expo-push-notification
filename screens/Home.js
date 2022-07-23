@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NFTCard, HomeHeader, FocusedStatusBar } from "../components";
 
 import { COLORS, NFTData,  } from "../constants";
-import { View, Text, SafeAreaView, FlatList, ScrollView} from "react-native";
+import { View, Text, SafeAreaView, ScrollView} from "react-native";
 
 const Home = () => {
 
@@ -10,8 +10,7 @@ const Home = () => {
         <SafeAreaView style={{flex : 1}}>
             <ScrollView>
 
-            <FocusedStatusBar background={COLORS.primary} />
-
+                <FocusedStatusBar background={COLORS.primary} />
 
                 <HomeHeader/>
 

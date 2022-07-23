@@ -57,3 +57,31 @@ export const RectButton = ({minWidth, fontSize, handlePress, ...props}) => {
         </TouchableOpacity>
     )
 }
+
+export const ApprovePendButton = ({minWidth, fontSize, handlePress, ...props}) => {
+    return (
+        <TouchableOpacity
+            style={{
+                backgroundColor: COLORS.primary,
+                borderRadius: SIZES.extraLarge,
+                minWidth: minWidth,
+                padding: SIZES.small,
+                ...props
+            }}
+            onPress = {handlePress}
+        >
+
+            <Text
+                style={{
+                fontFamily: FONTS.semiBold,
+                fontSize: fontSize,
+                color: COLORS.white,
+                textAlign: "center",
+                }}
+            >
+                APPROVE
+            </Text>
+
+        </TouchableOpacity>
+    )
+}

@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import { View, Text, SafeAreaView, Image, StatusBar, FlatList} from "react-native";
+import { View, Text, SafeAreaView, Image, StatusBar, FlatList, StyleSheet} from "react-native";
 import { ScrollView } from 'react-native-virtualized-view';
 
 import {COLORS, SIZES, SHADOWS, FONTS, assets} from '../constants';
@@ -28,15 +28,19 @@ const DetailsHeader = ({data, navigation}) => (
   </View>
 )
 
+const style = StyleSheet.create({
+  container:{
+    padding: SIZES.font,
+  }
+})
+
 
 const Details = ({route, navigation}) => {
   const {data} = route.params;
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <ScrollView>
-
-        <PendingTrans pendingStatus = {data.pendingTrans}/>
+      <ScrollView style = {style.container}>
 
         <DetailsHeader data = {data} navigation = {navigation}/>
 
