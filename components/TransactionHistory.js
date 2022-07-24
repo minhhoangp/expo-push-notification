@@ -2,6 +2,8 @@ import { View, Text, FlatList, StyleSheet } from 'react-native'
 import React from 'react'
 import { SIZES, FONTS, COLORS, SHADOWS, assets } from "../constants";
 
+import { BlurView } from "expo-blur";
+
 const style = StyleSheet.create({
   
   complete:{
@@ -30,14 +32,19 @@ const style = StyleSheet.create({
   },
 
   single:{
-    backgroundColor: '#00FF00',
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     padding: 15,
-    marginBottom: SIZES.font,
 
     flexDirection: 'row',
     justifyContent: 'space-between'
+  },
+
+  singleContainer:{
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    marginBottom: SIZES.font,
+    overflow: "hidden"
   },
 
   reject:{
@@ -53,7 +60,7 @@ const style = StyleSheet.create({
   widgetTitle:{
     fontFamily: FONTS.semiBold, 
     fontSize: SIZES.medium, 
-    color: COLORS.primary, 
+    color: COLORS.white, 
     marginBottom: SIZES.base,
     marginTop: SIZES.small,
 
@@ -68,12 +75,22 @@ const Item = ({data}) => {
   if (data.type == 'single'){
 
     return (
-      <View style={style.single}>
-        <Text>{data.time1}</Text>
-        <Text>{data.contract1}</Text>
-        <Text>{data.price1}</Text>
-        <Text>{data.position1}</Text>
-        <Text>-${data.price1*data.position1}</Text>  
+      <View style = {style.singleContainer}>
+        <BlurView
+          blurType="light"
+          blurAmount={10}
+          reducedTransparencyFallbackColor="white"
+        >
+          <View style={style.single}>
+
+            <Text>{data.time1}</Text>
+            <Text>{data.contract1}</Text>
+            <Text>{data.price1}</Text>
+            <Text>{data.position1}</Text>
+            <Text>-${data.price1*data.position1}</Text>  
+
+          </View>
+        </BlurView>
       </View>
     )
 

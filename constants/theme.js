@@ -4,15 +4,28 @@ export const COLORS = {
 
   white: "#FFF",
   gray: "#74858C",
+
+  blue: "#4036f1",
+  pink: "#f48474",
+  purple: "#4c1c6c",
+  sky: "#64609b",
+  noIdea: "#9383aa",
+  brown: "#5e2e36",
+
+  red:"#dd2d00",
+  mid:"#c2d4b1",
+  green:"#49a109",
 };
 
 export const SIZES = {
   xxs: 4,
+  xs: 6,
   base: 8,
   small: 12,
   font: 14,
   medium: 16,
   large: 18,
+  midLarge: 21,
   extraLarge: 24,
 };
 

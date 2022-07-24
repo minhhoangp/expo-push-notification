@@ -1,13 +1,32 @@
 import React, { useState } from "react";
 import { NFTCard, HomeHeader, FocusedStatusBar } from "../components";
 
-import { COLORS, NFTData,  } from "../constants";
-import { View, Text, SafeAreaView, ScrollView} from "react-native";
+import { COLORS, NFTData, assets} from "../constants";
+import { View, Text, SafeAreaView, ScrollView, Image} from "react-native";
 
 const Home = () => {
 
     return (
         <SafeAreaView style={{flex : 1}}>
+             
+            <View
+                style={{
+                    position: "absolute",
+                    zIndex: -1,
+                    flex: 1,
+                    alignSelf: 'center',
+                    height: 900 // TODO: ??
+                }}
+            >                
+                <Image 
+                    style={{
+                        alignSelf: 'center',
+                        flex: 1,
+                        resizeMode: 'contain'
+                    }}
+                source={ assets.bg02 } />   
+            </View>
+
             <ScrollView>
 
                 <FocusedStatusBar background={COLORS.primary} />
@@ -19,23 +38,6 @@ const Home = () => {
                 })}
 
             </ScrollView>
-
-
-            <View
-                style={{
-                    position: "absolute",
-                    top: 0,
-                    bottom: 0,
-                    right: 0,
-                    left: 0,
-                    zIndex: -1,
-                }}
-            >
-                
-                <View style={{ height: 300, backgroundColor: COLORS.primary }} />
-                <View style={{ flex: 1, backgroundColor: COLORS.white }} />
-                
-            </View>
 
         </SafeAreaView>
     )

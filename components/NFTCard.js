@@ -1,4 +1,4 @@
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, StyleSheet } from 'react-native';
 import React, { useState, useRef, useEffect, useContext, createContext } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
@@ -9,6 +9,21 @@ import { RectButton, CircleButton } from './Button';
 import { BotInfo, SubInfo, PendingTrans } from './SubInfo';
 
 import { PendingTransContext } from '../helper/Context';
+import { BlurView } from "expo-blur";
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  absolute: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0
+  }
+});
 
 
 const NFTCard = ({data}) => {
@@ -37,58 +52,48 @@ const NFTCard = ({data}) => {
 
     <PendingTransContext.Provider value={{timer}}>
 
-      <View style={{
-        backgroundColor: COLORS.white,
-        borderRadius: SIZES.font,
-        marginBottom: SIZES.extraLarge,
-        margin: SIZES.base,
-        ...SHADOWS.dark,
-      }}>
+        <View style={{
+          borderRadius: SIZES.font,
+          marginBottom: SIZES.extraLarge,
+          margin: SIZES.base,
+          ...SHADOWS.dark,
+          overflow: 'hidden'
+        }}>
+          <BlurView
+            blurType="light"
+            blurAmount={10}
+            reducedTransparencyFallbackColor="white"
+          >
 
-        <View style={{ width: "100%", height: 90, position: 'absolute'}}>
-          <Image
-              source={data.image}
-              resizeMode="cover"
+            <BotInfo 
+                botName = {data.botName}
+                assetName = {data.assetName}
+                exchangeName = {data.exchangeName}
+                profit = {data.profit}
+                elapsedTime = {data.elapsedTime}
+                baseCurrency = {data.baseCurrency}
+            />
+
+            <View
               style={{
-                width: "80%",
-                height: "150%",
-                borderTopLeftRadius: SIZES.font,
-                borderTopRightRadius: SIZES.font,
-                marginLeft: 35
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                padding: SIZES.base
               }}
-          />
+            >
+
+              <PendingTrans pendingStatus = {data.pendingTrans}/>
+              
+              
+              <RectButton
+                  fontSize={SIZES.font}
+                  handlePress={() => navigation.navigate("Details", { data, timer })}
+              />
+
+            </View>
+          </BlurView>
         </View>
-
-        <BotInfo 
-            botName = {data.botName}
-            assetName = {data.assetName}
-            exchangeName = {data.exchangeName}
-            profit = {data.profit}
-            elapsedTime = {data.elapsedTime}
-            baseCurrency = {data.baseCurrency}
-        />
-
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: SIZES.base
-          }}
-        >
-
-          <PendingTrans pendingStatus = {data.pendingTrans}/>
-          
-          
-          <RectButton
-              fontSize={SIZES.font}
-              handlePress={() => navigation.navigate("Details", { data, timer })}
-          />
-
-        </View>
-
-      </View>
-
     </PendingTransContext.Provider>
 
   )

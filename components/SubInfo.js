@@ -5,6 +5,7 @@ import { SIZES, FONTS, COLORS, SHADOWS, assets } from "../constants";
 import { ApprovePendButton, CircleButton } from './Button';
 
 import { PendingTransContext } from "../helper/Context";
+import { BlurView } from "expo-blur";
 
 export const NFTTitle = ({ title, subTitle, titleSize, subTitleSize }) => {
     return (
@@ -120,29 +121,42 @@ export const PendingTrans = ({pendingStatus}) => {
 
     if (pendingStatus == true){
         return (
-            <View style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: COLORS.gray,
-                padding: SIZES.base
+           
+            <View style={{                
+                borderRadius: SIZES.small,
+                borderRadius: SIZES.xs,
+                overflow: "hidden"
             }}>
-                <Text
-                    style={{
-                    fontFamily: FONTS.light,
-                    fontSize: SIZES.font,
-                    color: COLORS.primary,
-                }}>
-                    Pending request
-                </Text>
+                <BlurView
+                    blurType="light"
+                    blurAmount={100}
+                    tint="light"
+                    reducedTransparencyFallbackColor="white"
+                >
+                    <View style={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: SIZES.base
+                    }}>
+                        <Text
+                            style={{
+                            fontFamily: FONTS.light,
+                            fontSize: SIZES.font,
+                            color: COLORS.white,
+                        }}>
+                            Pending request
+                        </Text>
 
-                <Text
-                style={{
-                fontFamily: FONTS.semiBold,
-                fontSize: SIZES.medium,
-                color: COLORS.primary,
-                }}>
-                    0:{timer}
-                </Text>
+                        <Text
+                        style={{
+                        fontFamily: FONTS.semiBold,
+                        fontSize: SIZES.medium,
+                        color: COLORS.white,
+                        }}>
+                            0:{timer}
+                        </Text>
+                    </View>
+                </BlurView>
             </View>
         )
     } else {
@@ -158,7 +172,7 @@ export const BotName = ({botName}) => {
             style={{
             fontFamily: FONTS.regular,
             fontSize: SIZES.medium,
-            color: COLORS.secondary,
+            color: COLORS.white,
     
         }}>
             {botName}
@@ -169,12 +183,12 @@ export const BotName = ({botName}) => {
 export const Profit = ({profit}) => {
     if (profit >= 0){
         return (
-            <View style = {{borderRadius: SIZES.base, flexDirection: 'row', justifyContent: 'center', backgroundColor: COLORS.gray, padding: SIZES.xxs }}>
+            <View style = {{borderRadius: SIZES.base, flexDirection: 'row', justifyContent: 'center', backgroundColor: COLORS.green, padding: SIZES.xs }}>
                 <Text
                     style={{
                     fontFamily: FONTS.medium,
                     fontSize: SIZES.medium,
-                    color: COLORS.primary,
+                    color: COLORS.white,
                     }}
                 >
                     +{profit}%
@@ -184,13 +198,13 @@ export const Profit = ({profit}) => {
 
     } else {
         return (
-            <View style = {{borderRadius: SIZES.base, flexDirection: 'row', justifyContent: 'center', backgroundColor: COLORS.gray ,padding: SIZES.xxs }}>
+            <View style = {{borderRadius: SIZES.base, flexDirection: 'row', justifyContent: 'center', backgroundColor: COLORS.red ,padding: SIZES.xs }}>
 
                 <Text
                     style={{
                     fontFamily: FONTS.medium,
                     fontSize: SIZES.medium,
-                    color: COLORS.primary,
+                    color: COLORS.white,
                     }}
                 >
                     {profit}%
@@ -206,7 +220,7 @@ export const AssetName = ({assetName, baseCurrency}) => {
             style={{
             fontFamily: FONTS.semiBold,
             fontSize: SIZES.medium,
-            color: COLORS.primary,
+            color: COLORS.white,
         }}>
             {assetName}/{baseCurrency} 
         </Text>
@@ -251,7 +265,7 @@ export const BotInfo = ({botName, assetName, exchangeName, profit, elapsedTime, 
                     style={{
                     fontFamily: FONTS.regular,
                     fontSize: SIZES.medium,
-                    color: COLORS.secondary,
+                    color: COLORS.white,
                     }}
                 >
                     {elapsedTime}
@@ -276,13 +290,17 @@ export const BotDetailedInfo = ({botName, assetName, baseCurrency, exchangeName,
 
 const style = StyleSheet.create({
     pendingWidget:{
-        backgroundColor: '#ffcc99',
         padding: 15,
         borderRadius: 10,
-        marginBottom: SIZES.font,
 
         flexDirection: "row",
         justifyContent: "space-between"
+    },
+
+    pendingContainer:{
+        borderRadius: 10,
+        overflow: "hidden",
+        marginBottom: SIZES.font,
     },
 
     botDetail:{
@@ -309,7 +327,7 @@ const style = StyleSheet.create({
     widgetTitle:{
         fontFamily: FONTS.semiBold, 
         fontSize: SIZES.medium, 
-        color: COLORS.primary, 
+        color: COLORS.white, 
         marginBottom: SIZES.base,
         marginTop: SIZES.small
     }
@@ -331,7 +349,7 @@ export const IndicatorChecklist = ({checklist}) => {
                     <Text style = {{
                         fontFamily: FONTS.medium, 
                         fontSize: SIZES.font, 
-                        color: COLORS.primary, 
+                        color: COLORS.white, 
                     }}>
                         {item.indicator}</Text>
                 </View>)
@@ -368,38 +386,47 @@ export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
 
             <Text style = {style.widgetTitle}>Pending Transaction</Text>
 
-            <View style = {style.pendingWidget}>
-                
-                <View>
-                    <IndicatorChecklist checklist = {checklist}/>
-                </View>
+            <View style = {style.pendingContainer}>
+                <BlurView
+                    blurType="light"
+                    blurAmount={10}
+                    reducedTransparencyFallbackColor="white"
+                >
 
-                <View style = {{flexDirection: 'column', justifyContent: 'space-between'}}>
-                    
-                    <View style={{
-                            flexDirection:'column',
-                            alignItems: 'center'}}>
-                        <Text style={{
-                            fontFamily: FONTS.light,
-                            fontSize: SIZES.font,
-                            color: COLORS.primary
-                        }}> Ending in </Text>
+                    <View style = {style.pendingWidget}>
+                        
+                        <View>
+                            <IndicatorChecklist checklist = {checklist}/>
+                        </View>
 
-                        <Text style={{
-                            fontFamily: FONTS.semiBold,
-                            fontSize: SIZES.medium,
-                            color: COLORS.primary}}>0:{timer}</Text>
+                        <View style = {{flexDirection: 'column', justifyContent: 'space-between'}}>
+                            
+                            <View style={{
+                                    flexDirection:'column',
+                                    alignItems: 'center'}}>
+                                <Text style={{
+                                    fontFamily: FONTS.light,
+                                    fontSize: SIZES.font,
+                                    color: COLORS.white
+                                }}> Ending in </Text>
+
+                                <Text style={{
+                                    fontFamily: FONTS.semiBold,
+                                    fontSize: SIZES.medium,
+                                    color: COLORS.white}}>0:{timer}</Text>
+                            </View>
+                        
+
+                            <ApprovePendButton
+                                handlePress={() => console.log("hello")}
+                            />
+                        </View>
+                        
+
                     </View>
-                
 
-                    <ApprovePendButton
-                        handlePress={() => console.log("hello")}
-                    />
-                </View>
-                
-
+                </BlurView>
             </View>
-
         </React.Fragment>
     )
 }
