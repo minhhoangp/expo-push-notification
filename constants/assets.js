@@ -3,9 +3,9 @@ import binanceLogoDetail from "../assets/images/binanceLogoDetail.png";
 
 import bybitLogo from "../assets/images/bybitLogo.png";
 import huobiLogo from "../assets/images/huobiLogo.png";
-import bitcoin from "../assets/images/bitcoin.png";
-import doge from "../assets/images/doge.png";
-import luna2 from "../assets/images/luna2.png";
+import BTC from "../assets/images/BTC.png";
+import DOGE from "../assets/images/DOGE.png";
+import LUNA from "../assets/images/LUNA.png";
 import tick from "../assets/images/tick.png"
 
 import badge from "../assets/icons/badge.png";
@@ -32,9 +32,9 @@ export default {
   binanceLogo, binanceLogoDetail,
   bybitLogo, 
   huobiLogo, 
-  bitcoin,
-  doge,
-  luna2,
+  BTC,
+  DOGE,
+  LUNA,
   tick,
 
   badge,

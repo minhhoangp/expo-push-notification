@@ -7,6 +7,7 @@ export const COLORS = {
 };
 
 export const SIZES = {
+  xxs: 4,
   base: 8,
   small: 12,
   font: 14,

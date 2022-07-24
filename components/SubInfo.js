@@ -120,24 +120,34 @@ export const PendingTrans = ({pendingStatus}) => {
 
     if (pendingStatus == true){
         return (
-            <Text
-                style={{
-                fontFamily: FONTS.medium,
-                fontSize: SIZES.font,
-                color: COLORS.secondary,
+            <View style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: COLORS.gray,
+                padding: SIZES.base
             }}>
-               PENDING TRANS: 0: {timer}
-            </Text>
+                <Text
+                    style={{
+                    fontFamily: FONTS.light,
+                    fontSize: SIZES.font,
+                    color: COLORS.primary,
+                }}>
+                    Pending request
+                </Text>
+
+                <Text
+                style={{
+                fontFamily: FONTS.semiBold,
+                fontSize: SIZES.medium,
+                color: COLORS.primary,
+                }}>
+                    0:{timer}
+                </Text>
+            </View>
         )
     } else {
         return (
-            <Text
-                style={{
-                fontFamily: FONTS.medium,
-                fontSize: SIZES.font,
-                color: COLORS.secondary,
-            }}>
-            </Text>
+            <View></View>
         )
     }
 }
@@ -146,24 +156,59 @@ export const BotName = ({botName}) => {
     return (
         <Text
             style={{
-            fontFamily: FONTS.medium,
-            fontSize: SIZES.font,
-            color: COLORS.primary,
+            fontFamily: FONTS.regular,
+            fontSize: SIZES.medium,
+            color: COLORS.secondary,
+    
         }}>
             {botName}
         </Text>
     )
 }
 
-export const AssetName = ({assetName}) => {
+export const Profit = ({profit}) => {
+    if (profit >= 0){
+        return (
+            <View style = {{borderRadius: SIZES.base, flexDirection: 'row', justifyContent: 'center', backgroundColor: COLORS.gray, padding: SIZES.xxs }}>
+                <Text
+                    style={{
+                    fontFamily: FONTS.medium,
+                    fontSize: SIZES.medium,
+                    color: COLORS.primary,
+                    }}
+                >
+                    +{profit}%
+                </Text>
+            </View>
+        )
+
+    } else {
+        return (
+            <View style = {{borderRadius: SIZES.base, flexDirection: 'row', justifyContent: 'center', backgroundColor: COLORS.gray ,padding: SIZES.xxs }}>
+
+                <Text
+                    style={{
+                    fontFamily: FONTS.medium,
+                    fontSize: SIZES.medium,
+                    color: COLORS.primary,
+                    }}
+                >
+                    {profit}%
+                </Text>
+            </View>
+        )
+    }
+}
+
+export const AssetName = ({assetName, baseCurrency}) => {
     return (
         <Text
             style={{
-            fontFamily: FONTS.medium,
-            fontSize: SIZES.font,
+            fontFamily: FONTS.semiBold,
+            fontSize: SIZES.medium,
             color: COLORS.primary,
         }}>
-            {assetName}
+            {assetName}/{baseCurrency} 
         </Text>
     )
 }
@@ -181,40 +226,32 @@ export const ExchangeName = ({exchangeName}) => {
     )
 }
 
-export const BotInfo = ({botName, assetName, exchangeName, profit, elapsedTime}) => {
+export const BotInfo = ({botName, assetName, exchangeName, profit, elapsedTime, baseCurrency}) => {
+   
     return (
-        <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: -150}}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between" ,alignItems: 'center', padding: SIZES.base}}>
 
-            <View style={{ flexDirection: "row"}}>
+            <View style={{ flexDirection: "row", alignItems: 'center' }}>
                 <Image
                     source = {assets[assetName]}
                     resizeMode ="contain"
                     style = {{ width: 70, height: 70 }}
                 />
 
-                <View>
+                <View style={{marginLeft: SIZES.base}}>
+                    <AssetName assetName = {assetName} baseCurrency = {baseCurrency}/>
                     <BotName botName = {botName}/>
-                    <AssetName assetName = {assetName}/>
-                    <ExchangeName exchangeName = {exchangeName}/>
                 </View>
             </View>
 
-            <View>
-                <Text
-                    style={{
-                    fontFamily: FONTS.medium,
-                    fontSize: SIZES.font,
-                    color: COLORS.primary,
-                    }}
-                >
-                    {profit}
-                </Text>
+            <View style = {{alignItems: 'flex-end'}}>
+                <Profit profit = {profit}/>
 
                 <Text
                     style={{
-                    fontFamily: FONTS.medium,
-                    fontSize: SIZES.font,
-                    color: COLORS.primary,
+                    fontFamily: FONTS.regular,
+                    fontSize: SIZES.medium,
+                    color: COLORS.secondary,
                     }}
                 >
                     {elapsedTime}
@@ -224,58 +261,17 @@ export const BotInfo = ({botName, assetName, exchangeName, profit, elapsedTime})
     );
 }
 
-export const BotDetailedInfo = ({botName, assetName, exchangeName, profit, elapsedTime}) => {
-return (
-    <View
-        style={{
-            width: "100%",
-            paddingHorizontal: SIZES.font,
-            marginTop: -SIZES.extraLarge,
-            flexDirection: "row",
-            justifyContent: "space-between", 
-    }}>
-
-        <View style={{ flexDirection: "row", justifyContent: "space-between"}}>
-
-            <View style={{ flexDirection: "row"}}>
-                <Image
-                    source = {assets[assetName]}
-                    resizeMode ="contain"
-                    style = {{ width: 70, height: 70 }}
-                />
-
-                <View>
-                    <BotName botName = {botName}/>
-                    <AssetName assetName = {assetName}/>
-                    <ExchangeName exchangeName = {exchangeName}/>
-                </View>
-            </View>
-
-            <View>
-                <Text
-                    style={{
-                    fontFamily: FONTS.medium,
-                    fontSize: SIZES.font,
-                    color: COLORS.primary,
-                    }}
-                >
-                    {profit}
-                </Text>
-
-                <Text
-                    style={{
-                    fontFamily: FONTS.medium,
-                    fontSize: SIZES.font,
-                    color: COLORS.primary,
-                    }}
-                >
-                    {elapsedTime}
-                </Text>
-            </View>
-        </View>
-
-    </View>
-);
+export const BotDetailedInfo = ({botName, assetName, baseCurrency, exchangeName, profit, elapsedTime}) => {
+    return (
+        <BotInfo 
+            botName = {botName}
+            assetName = {assetName}
+            exchangeName = {exchangeName}
+            profit = {profit}
+            elapsedTime = {elapsedTime}
+            baseCurrency = {baseCurrency}
+        />
+    )
 };
 
 const style = StyleSheet.create({
@@ -297,6 +293,7 @@ const style = StyleSheet.create({
 
     indicator:{
         flexDirection: "row", 
+        margin: SIZES.xxs
     },
 
     tickIcon:{
@@ -331,7 +328,12 @@ export const IndicatorChecklist = ({checklist}) => {
                         resizeMode="contain"
                         style={{ width: 20, height: 20 }}
                     />
-                    <Text>{item.indicator}</Text>
+                    <Text style = {{
+                        fontFamily: FONTS.medium, 
+                        fontSize: SIZES.font, 
+                        color: COLORS.primary, 
+                    }}>
+                        {item.indicator}</Text>
                 </View>)
             })}
     
@@ -372,9 +374,22 @@ export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
                     <IndicatorChecklist checklist = {checklist}/>
                 </View>
 
-                <View>
+                <View style = {{flexDirection: 'column', justifyContent: 'space-between'}}>
                     
-                    <Text>Timer: {timer}</Text>
+                    <View style={{
+                            flexDirection:'column',
+                            alignItems: 'center'}}>
+                        <Text style={{
+                            fontFamily: FONTS.light,
+                            fontSize: SIZES.font,
+                            color: COLORS.primary
+                        }}> Ending in </Text>
+
+                        <Text style={{
+                            fontFamily: FONTS.semiBold,
+                            fontSize: SIZES.medium,
+                            color: COLORS.primary}}>0:{timer}</Text>
+                    </View>
                 
 
                     <ApprovePendButton

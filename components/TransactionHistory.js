@@ -73,7 +73,7 @@ const Item = ({data}) => {
         <Text>{data.contract1}</Text>
         <Text>{data.price1}</Text>
         <Text>{data.position1}</Text>
-        <Text>{data.price1*data.position1}</Text>  
+        <Text>-${data.price1*data.position1}</Text>  
       </View>
     )
 
@@ -87,7 +87,7 @@ const Item = ({data}) => {
           <Text>{data.contract1}</Text>
           <Text>{data.price1}</Text>
           <Text>{data.position1}</Text>
-          <Text>{data.price1*data.position1}</Text>  
+          <Text>+${data.price1*data.position1}</Text>  
         </View>
 
         <View style = {style.completeContract2}>
@@ -95,7 +95,7 @@ const Item = ({data}) => {
           <Text>{data.contract2}</Text>
           <Text>{data.price2}</Text>
           <Text>{data.position2}</Text>
-          <Text>{data.price2*data.position2}</Text>     
+          <Text>-${data.price2*data.position2}</Text>     
         </View>
 
       </View>
@@ -109,7 +109,7 @@ const Item = ({data}) => {
         <Text>{data.contract1}</Text>
         <Text>{data.price1}</Text>
         <Text>{data.position1}</Text>
-        <Text>{data.price1*data.position1}</Text>  
+        <Text>${data.price1*data.position1}</Text>  
       </View>
     )
 

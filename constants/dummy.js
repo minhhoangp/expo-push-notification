@@ -3,9 +3,10 @@ import assets from "./assets";
 const NFTData = [
   {
     botName: "BOT 01",
-    assetName: "luna2",
-    exchangeName: "BINANCE",
-    profit: "+2.3%",
+    assetName: "LUNA",
+    baseCurrency: "USDT",
+    exchangeName: "Binance",
+    profit: 2.3,
     elapsedTime: "1h31m",
     pendingTrans: true,
     historyicalRecord: true,
@@ -62,7 +63,8 @@ const NFTData = [
       checklist: [
         {indicator: "20 Moving Avarage", id: 1},
         {indicator: "RSI", id: 2},
-        {indicator: "On-Balance Volume", id: 3}
+        {indicator: "On-Balance Volume", id: 3},
+        {indicator: "Tailored", id: 4}
       ],
       timeRemaining: 39
     },
@@ -101,9 +103,10 @@ const NFTData = [
   },
   {
     botName: "BOT 02",
-    assetName: "bitcoin",
+    assetName: "BTC",
+    baseCurrency: "USDT",
     exchangeName: "BINANCE",
-    profit: "+2.3%",
+    profit: -2.9,
     elapsedTime: "1h31m",
     pendingTrans: false,
     historyicalRecord: true,
@@ -144,9 +147,10 @@ const NFTData = [
   },
   {
     botName: "BOT 03",
-    assetName: "doge",
+    assetName: "DOGE",
+    baseCurrency: "USDT",
     exchangeName: "BINANCE",
-    profit: "+2.3%",
+    profit: 3.6,
     elapsedTime: "1h31m",
     pendingTrans: false,
     historyicalRecord: true,
@@ -208,8 +212,9 @@ const NFTData = [
   {
     botName: "BOT 04",
     assetName: "eth",
+    baseCurrency: "USDT",
     exchangeName: "BILO",
-    profit: "-4.7%",
+    profit: -4.7,
     elapsedTime: "1h31m",
     pendingTrans: true,
     historyicalRecord: true,
@@ -292,8 +297,9 @@ const NFTData = [
   {
     botName: "BOT 05",
     assetName: "eth",
+    baseCurrency: "USDT",
     exchangeName: "BINANCE",
-    profit: "+2.3%",
+    profit: 0,
     elapsedTime: "1h31m",
     pendingTrans: false,
     historyicalRecord: false,

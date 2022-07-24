@@ -47,6 +47,7 @@ const Details = ({route, navigation}) => {
         <BotDetailedInfo
           botName = {data.botName}
           assetName = {data.assetName}
+          baseCurrency = {data.baseCurrency}
           exchangeName = {data.exchangeName}
           profit = {data.profit}
           elapsedTime = {data.elapsedTime}

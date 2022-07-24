@@ -42,10 +42,10 @@ const NFTCard = ({data}) => {
         borderRadius: SIZES.font,
         marginBottom: SIZES.extraLarge,
         margin: SIZES.base,
-        ...SHADOWS.dark
+        ...SHADOWS.dark,
       }}>
 
-        <View style={{ width: "100%", height: 100}}>
+        <View style={{ width: "100%", height: 90, position: 'absolute'}}>
           <Image
               source={data.image}
               resizeMode="cover"
@@ -57,35 +57,33 @@ const NFTCard = ({data}) => {
                 marginLeft: 35
               }}
           />
+        </View>
 
-
-          <BotInfo 
+        <BotInfo 
             botName = {data.botName}
             assetName = {data.assetName}
             exchangeName = {data.exchangeName}
             profit = {data.profit}
             elapsedTime = {data.elapsedTime}
-          />
-        </View>
+            baseCurrency = {data.baseCurrency}
+        />
 
         <View
           style={{
-            marginTop: SIZES.font,
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
+            padding: SIZES.base
           }}
         >
 
-        <PendingTrans pendingStatus = {data.pendingTrans}/>
-        
-        
-        <RectButton
-            right={10} bottom={10}
-            minWidth={120}
-            fontSize={SIZES.font}
-            handlePress={() => navigation.navigate("Details", { data, timer })}
-        />
+          <PendingTrans pendingStatus = {data.pendingTrans}/>
+          
+          
+          <RectButton
+              fontSize={SIZES.font}
+              handlePress={() => navigation.navigate("Details", { data, timer })}
+          />
 
         </View>
 
