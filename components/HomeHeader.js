@@ -9,31 +9,17 @@ const HomeHeader = ({ onSearch }) => {
         padding: SIZES.font,
       }}
     >
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <Image
-          source={assets.logo}
-          resizeMode="contain"
-          style={{ width: 90, height: 25 }}
-        />
 
 
-      </View>
-
-      <View style={{ marginVertical: SIZES.font }}>
+      <View style={{ }}>
         <Text
           style={{
             fontFamily: FONTS.regular,
-            fontSize: SIZES.small,
+            fontSize: SIZES.regular,
             color: COLORS.white,
           }}
         >
-          Welcome to BOT TRACKER 👋
+          Welcome to Trading Alert 🤙🤖💸🤑
         </Text>
 
         <Text
@@ -44,7 +30,7 @@ const HomeHeader = ({ onSearch }) => {
             marginTop: SIZES.base / 2,
           }}
         >
-          View your bots' progresses
+          Get notified about every trading opportunity
         </Text>
       </View>
 

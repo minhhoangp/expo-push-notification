@@ -120,8 +120,7 @@ export const PendingTrans = ({pendingStatus}) => {
     const {timer} = useContext(PendingTransContext)
 
     if (pendingStatus == true){
-        return (
-           
+        return (         
             <View style={{                
                 borderRadius: SIZES.xs,
                 overflow: "hidden",
@@ -384,6 +383,14 @@ export const IndicatorChecklist = ({checklist}) => {
 
 }
 
+export const ExpireButton = () => {
+    return  (
+        <View>
+            <Text>EXPIRE</Text>
+        </View>
+    )
+}
+
 export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
 
     const [timer, setTimer] = useState(timeRemaining);
@@ -453,12 +460,11 @@ export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
                                 </View>
                         
 
-                            <ApprovePendButton
+                            {timer >= 1 && <ApprovePendButton
                                 handlePress={() => console.log("hello")}
-                            />
+                            />}
+        
                         </View>
-                        
-
                     </View>
 
                 </BlurView>

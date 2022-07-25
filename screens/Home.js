@@ -24,7 +24,7 @@ const Home = () => {
                         flex: 1,
                         resizeMode: 'contain'
                     }}
-                source={ assets.bg02 } />   
+                source={ assets.bg09} />   
             </View>
 
             <ScrollView>

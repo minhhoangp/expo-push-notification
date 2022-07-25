@@ -119,10 +119,7 @@ const NFTData = [
         price1: 70.68,
         time1:"1:50:21 PM",
 
-        contract2: null,
-        position2: null,
-        price2: null,
-        time2: null
+        type: "single"
       },
     ],
 
@@ -163,10 +160,7 @@ const NFTData = [
         price1: 70.68,
         time1:"1:50:21 PM",
 
-        contract2: null,
-        position2: null,
-        price2: null,
-        time2: null
+        type: "single"
       },
       {
         id: "2",
@@ -179,7 +173,9 @@ const NFTData = [
         contract2: "buy",
         position2: 3,
         price2: 72.13,
-        time2: "01:00:59 PM"
+        time2: "01:00:59 PM",
+
+        type: "complete"
       },
     ],
     
@@ -227,10 +223,8 @@ const NFTData = [
         price1: 70.68,
         time1:"1:50:21 PM",
 
-        contract2: null,
-        position2: null,
-        price2: null,
-        time2: null
+        type: "single"
+
       },
       {
         id: "2",
@@ -243,7 +237,9 @@ const NFTData = [
         contract2: "buy",
         position2: 3,
         price2: 72.13,
-        time2: "01:00:59 PM"
+        time2: "01:00:59 PM",
+
+        type: "complete"
       },
     ],
 
