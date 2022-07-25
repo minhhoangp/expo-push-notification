@@ -7,7 +7,7 @@ const NFTData = [
     baseCurrency: "USDT",
     exchangeName: "Binance",
     profit: 2.3,
-    elapsedTime: "1h31m",
+    elapsedTime: "02h 22m",
     pendingTrans: true,
     historyicalRecord: true,
     transHistory: [
@@ -15,7 +15,7 @@ const NFTData = [
         id: "4",
         type: "single",
 
-        contract1: "long",
+        contract1: "buy",
         position1: 2,
         price1: 70.68,
         time1:"1:50:21 PM",
@@ -24,12 +24,12 @@ const NFTData = [
         id: "1",
         type: "complete",
 
-        contract1: "long",
+        contract1: "buy",
         position1: 2,
         price1: 70.68,
         time1:"1:50:21 PM",
 
-        contract2: "long",
+        contract2: "sell",
         position2: 2,
         price2: 72.68,
         time2:"1:51:21 PM",
@@ -38,7 +38,7 @@ const NFTData = [
         id: "2",
         type: "rejected",
 
-        contract1: "long",
+        contract1: "buy",
         position1: 2,
         price1: 70.68,
         time1:"1:50:21 PM",
@@ -47,12 +47,12 @@ const NFTData = [
         id: "3",
         type: "complete",
 
-        contract1: "short",
+        contract1: "sell",
         position1: 3,
         price1: 77.23,
         time1:"12:10:01 PM",
 
-        contract2: "short",
+        contract2: "buy",
         position2: 3,
         price2: 72.13,
         time2: "01:00:59 PM"
@@ -107,14 +107,14 @@ const NFTData = [
     baseCurrency: "USDT",
     exchangeName: "BINANCE",
     profit: -2.9,
-    elapsedTime: "1h31m",
+    elapsedTime: "01h 31m",
     pendingTrans: false,
     historyicalRecord: true,
     transHistory: [
       {
         id: "1",
 
-        contract1: "long",
+        contract1: "buy",
         position1: 2,
         price1: 70.68,
         time1:"1:50:21 PM",
@@ -151,14 +151,14 @@ const NFTData = [
     baseCurrency: "USDT",
     exchangeName: "BINANCE",
     profit: 3.6,
-    elapsedTime: "1h31m",
+    elapsedTime: "05h 12m",
     pendingTrans: false,
     historyicalRecord: true,
     transHistory: [
       {
         id: "1",
 
-        contract1: "long",
+        contract1: "buy",
         position1: 2,
         price1: 70.68,
         time1:"1:50:21 PM",
@@ -171,12 +171,12 @@ const NFTData = [
       {
         id: "2",
 
-        contract1: "short",
+        contract1: "sell",
         position1: 3,
         price1: 77.23,
         time1:"12:10:01 PM",
 
-        contract2: "short",
+        contract2: "buy",
         position2: 3,
         price2: 72.13,
         time2: "01:00:59 PM"
@@ -222,7 +222,7 @@ const NFTData = [
       {
         id: "1",
 
-        contract1: "long",
+        contract1: "buy",
         position1: 2,
         price1: 70.68,
         time1:"1:50:21 PM",
@@ -235,12 +235,12 @@ const NFTData = [
       {
         id: "2",
 
-        contract1: "short",
+        contract1: "sell",
         position1: 3,
         price1: 77.23,
         time1:"12:10:01 PM",
 
-        contract2: "short",
+        contract2: "buy",
         position2: 3,
         price2: 72.13,
         time2: "01:00:59 PM"

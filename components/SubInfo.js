@@ -123,9 +123,10 @@ export const PendingTrans = ({pendingStatus}) => {
         return (
            
             <View style={{                
-                borderRadius: SIZES.small,
                 borderRadius: SIZES.xs,
-                overflow: "hidden"
+                overflow: "hidden",
+                marginLeft: SIZES.xs,
+                marginBottom: SIZES.xs
             }}>
                 <BlurView
                     blurType="light"
@@ -231,9 +232,9 @@ export const ExchangeName = ({exchangeName}) => {
     return (
         <Text
             style={{
-            fontFamily: FONTS.medium,
-            fontSize: SIZES.font,
-            color: COLORS.primary,
+            fontFamily: FONTS.regular,
+            fontSize: SIZES.regular,
+            color: COLORS.white,
         }}>
             {exchangeName}
         </Text>
@@ -252,20 +253,22 @@ export const BotInfo = ({botName, assetName, exchangeName, profit, elapsedTime, 
                     style = {{ width: 70, height: 70 }}
                 />
 
-                <View style={{marginLeft: SIZES.base}}>
+                <View style={{marginLeft: SIZES.small}}>
                     <AssetName assetName = {assetName} baseCurrency = {baseCurrency}/>
+                    <View style={{margin: SIZES.xxs}}></View>
                     <BotName botName = {botName}/>
                 </View>
             </View>
 
-            <View style = {{alignItems: 'flex-end'}}>
+            <View style = {{alignItems: 'flex-end', margin: SIZES.xxs}}>
                 <Profit profit = {profit}/>
 
                 <Text
                     style={{
-                    fontFamily: FONTS.regular,
+                    fontFamily: FONTS.light,
                     fontSize: SIZES.medium,
                     color: COLORS.white,
+                    marginTop: SIZES.xs
                     }}
                 >
                     {elapsedTime}
@@ -277,14 +280,37 @@ export const BotInfo = ({botName, assetName, exchangeName, profit, elapsedTime, 
 
 export const BotDetailedInfo = ({botName, assetName, baseCurrency, exchangeName, profit, elapsedTime}) => {
     return (
-        <BotInfo 
-            botName = {botName}
-            assetName = {assetName}
-            exchangeName = {exchangeName}
-            profit = {profit}
-            elapsedTime = {elapsedTime}
-            baseCurrency = {baseCurrency}
-        />
+        <View style={{ flexDirection: "row", justifyContent: "space-between" ,alignItems: 'center', padding: SIZES.base}}>
+
+            <View style={{ flexDirection: "row", alignItems: 'center' }}>
+                <Image
+                    source = {assets[assetName]}
+                    resizeMode ="contain"
+                    style = {{ width: 70, height: 70 }}
+                />
+
+                <View style={{marginLeft: SIZES.small}}>
+                    <AssetName assetName = {assetName} baseCurrency = {baseCurrency}/>
+                    <View style={{margin: SIZES.xxs}}></View>
+                    <ExchangeName exchangeName = {exchangeName}/>
+                </View>
+            </View>
+
+            <View style = {{alignItems: 'flex-end', margin: SIZES.xxs}}>
+                <Profit profit = {profit}/>
+
+                <Text
+                    style={{
+                    fontFamily: FONTS.light,
+                    fontSize: SIZES.medium,
+                    color: COLORS.white,
+                    marginTop: SIZES.xs
+                    }}
+                >
+                    {elapsedTime}
+                </Text>
+            </View>
+        </View>
     )
 };
 
@@ -320,8 +346,6 @@ const style = StyleSheet.create({
         backgroundColor: "#55BCF6",
         opacity: 0.4, 
         borderRadius: 5,
-
-        
     },
 
     widgetTitle:{
@@ -400,21 +424,32 @@ export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
                         </View>
 
                         <View style = {{flexDirection: 'column', justifyContent: 'space-between'}}>
-                            
-                            <View style={{
-                                    flexDirection:'column',
-                                    alignItems: 'center'}}>
-                                <Text style={{
-                                    fontFamily: FONTS.light,
-                                    fontSize: SIZES.font,
-                                    color: COLORS.white
-                                }}> Ending in </Text>
 
-                                <Text style={{
-                                    fontFamily: FONTS.semiBold,
-                                    fontSize: SIZES.medium,
-                                    color: COLORS.white}}>0:{timer}</Text>
-                            </View>
+                                <View style= {{ borderRadius: SIZES.xs, overflow: "hidden" }}>
+                                    <BlurView
+                                        blurType="light"
+                                        blurAmount={100}
+                                        tint="light"
+                                        reducedTransparencyFallbackColor="white"
+                                    >
+                                        <View  style={{
+                                            flexDirection:'column',
+                                            alignItems: 'center',
+                                            margin: SIZES.xs
+                                            }}>
+                                            <Text style={{
+                                                fontFamily: FONTS.light,
+                                                fontSize: SIZES.font,
+                                                color: COLORS.white
+                                            }}> Ending in </Text>
+
+                                            <Text style={{
+                                                fontFamily: FONTS.semiBold,
+                                                fontSize: SIZES.medium,
+                                                color: COLORS.white}}>0:{timer}</Text>
+                                        </View>
+                                    </BlurView>
+                                </View>
                         
 
                             <ApprovePendButton

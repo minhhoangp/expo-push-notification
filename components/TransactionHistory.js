@@ -6,29 +6,24 @@ import { BlurView } from "expo-blur";
 
 const style = StyleSheet.create({
   
-  complete:{
+  completeContainer:{
     borderRadius: 10,
     marginBottom: SIZES.font,
+    overflow: "hidden"
   },
 
   completeContract1:{
-    backgroundColor: '#ffcc99',
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
     padding: 15,
-    
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
 
   completeContract2:{
-    backgroundColor: '#00FF00',
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
     padding: 15,
-    
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
 
   single:{
@@ -37,24 +32,28 @@ const style = StyleSheet.create({
     padding: 15,
 
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
 
   singleContainer:{
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     marginBottom: SIZES.font,
+    overflow: "hidden",    
+  },
+
+  rejectContainer:{
+    borderRadius: 10,
+    marginBottom: SIZES.font,
     overflow: "hidden"
   },
 
   reject:{
-    backgroundColor: '#ff0000',
-    borderRadius: 10,
     padding: 15,
-    marginBottom: SIZES.font,
-
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
 
   widgetTitle:{
@@ -63,15 +62,45 @@ const style = StyleSheet.create({
     color: COLORS.white, 
     marginBottom: SIZES.base,
     marginTop: SIZES.small,
+  },
 
+  historyText:{
+    color: COLORS.white,
+  },
 
+  rejectText:{
+    color: COLORS.white,
+    textDecorationLine: 'line-through',
+    textDecorationStyle: 'solid'
+  },
+
+  redWrapper:{
+    padding: SIZES.xs, 
+    backgroundColor: COLORS.red, 
+    borderRadius: SIZES.base
+  },
+
+  greenWrapper:{
+    padding: SIZES.xs, 
+    backgroundColor: COLORS.green, 
+    borderRadius: SIZES.base
+  },
+
+  tableTitle:{
+    flexDirection: 'row',
+    justifyContent: 'space-around', 
+    marginLeft: SIZES.extraLarge
   }
-
 })
 
 
-
 const Item = ({data}) => {
+
+  var wrapperTextStyle1 = style.greenWrapper 
+  var wrapperTextStyle2 = style.greenWrapper 
+  if (data.contract1 == 'sell'){ wrapperTextStyle1 = style.redWrapper }
+  if (data.contract2 == 'sell'){ wrapperTextStyle2 = style.redWrapper }
+
   if (data.type == 'single'){
 
     return (
@@ -83,11 +112,11 @@ const Item = ({data}) => {
         >
           <View style={style.single}>
 
-            <Text>{data.time1}</Text>
-            <Text>{data.contract1}</Text>
-            <Text>{data.price1}</Text>
-            <Text>{data.position1}</Text>
-            <Text>-${data.price1*data.position1}</Text>  
+            <Text style={style.historyText}>{data.time1}</Text>
+            <View style={wrapperTextStyle1}><Text style={style.historyText}>{data.contract1}</Text></View>
+            <Text style={style.historyText}>{data.price1}</Text>
+            <Text style={style.historyText}>{data.position1}</Text>
+            <Text style={style.historyText}>-${data.price1*data.position1}</Text>  
 
           </View>
         </BlurView>
@@ -97,49 +126,67 @@ const Item = ({data}) => {
   } else if (data.type == 'complete'){
 
     return (
-      <View style={style.complete}>
+      <View style={style.completeContainer}>
+        <BlurView
+          blurType="light"
+          blurAmount={10}
+          reducedTransparencyFallbackColor="white"
+        >
+          <View style = {style.completeContract1}>
+            <Text style={style.historyText}>{data.time1}</Text>
+            <View style={wrapperTextStyle1}><Text style={style.historyText}>{data.contract1}</Text></View>
+            <Text style={style.historyText}>{data.price1}</Text>
+            <Text style={style.historyText}>{data.position1}</Text>
+            <Text style={style.historyText}>+${data.price1*data.position1}</Text>  
+          </View>
 
-        <View style = {style.completeContract1}>
-          <Text>{data.time1}</Text>
-          <Text>{data.contract1}</Text>
-          <Text>{data.price1}</Text>
-          <Text>{data.position1}</Text>
-          <Text>+${data.price1*data.position1}</Text>  
-        </View>
-
-        <View style = {style.completeContract2}>
-          <Text>{data.time2}</Text>
-          <Text>{data.contract2}</Text>
-          <Text>{data.price2}</Text>
-          <Text>{data.position2}</Text>
-          <Text>-${data.price2*data.position2}</Text>     
-        </View>
-
+          <View style = {style.completeContract2}>
+            <Text style={style.historyText}>{data.time2}</Text>
+            <View style={wrapperTextStyle2}><Text style={style.historyText}>{data.contract2}</Text></View>
+            <Text style={style.historyText}>{data.price2}</Text>
+            <Text style={style.historyText}>{data.position2}</Text>
+            <Text style={style.historyText}>-${data.price2*data.position2}</Text>     
+          </View>
+        </BlurView>
       </View>
     )
 
   } else {
 
     return (
-      <View style={style.reject}>
-        <Text>{data.time1}</Text>
-        <Text>{data.contract1}</Text>
-        <Text>{data.price1}</Text>
-        <Text>{data.position1}</Text>
-        <Text>${data.price1*data.position1}</Text>  
+      <View style={style.rejectContainer}>
+        <BlurView
+          blurType="light"
+          blurAmount={10}
+          reducedTransparencyFallbackColor="white"
+        >
+          <View style={style.reject}>
+            <Text style={style.rejectText}>{data.time1}</Text>
+            <View style={wrapperTextStyle1}><Text style={style.rejectText}>{data.contract1}</Text></View>
+            <Text style={style.rejectText}>{data.price1}</Text>
+            <Text style={style.rejectText}>{data.position1}</Text>
+            <Text style={style.rejectText}>${data.price1*data.position1}</Text>  
+          </View>
+        </BlurView>
       </View>
     )
 
   }
 } 
 
-
-
 const TransactionHistory = ({transHistory}) => {
   return (
     <React.Fragment>
       
       <Text style = {style.widgetTitle}>Past Transactions</Text>
+
+      {/* <View style = {style.tableTitle}>
+        <Text style={style.historyText}>Time</Text>
+        <Text style={style.historyText}>Side</Text>
+        <Text style={style.historyText}>Price</Text>
+        <Text style={style.historyText}>Unit</Text>
+        <Text style={style.historyText}>Amount</Text>
+      </View> */}
 
       {<FlatList
         data={transHistory}
