@@ -389,11 +389,12 @@ export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
     const [timer, setTimer] = useState(timeRemaining);
 
     const intervalRef = useRef(); // Add a ref to store the interval id
-  
+    const receivedDate = new Date();
+
     useEffect(() => {
       intervalRef.current = setInterval(() => {
-        setTimer((t) => t - 1);
-      }, 1000);
+        setTimer(() => Math.round(timeRemaining - (new Date() - receivedDate )/1000));
+    }, 1000);
       return () => clearInterval(intervalRef.current);
     }, []);
   

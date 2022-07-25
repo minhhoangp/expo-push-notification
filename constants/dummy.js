@@ -66,7 +66,7 @@ const NFTData = [
         {indicator: "On-Balance Volume", id: 3},
         {indicator: "Tailored", id: 4}
       ],
-      timeRemaining: 39
+      timeRemaining: 39,
     },
 
 

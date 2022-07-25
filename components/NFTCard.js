@@ -30,12 +30,13 @@ const NFTCard = ({data}) => {
   const navigation = useNavigation();
   
   const [timer, setTimer] = useState(data.pendingTrans ? data.pendingInfo.timeRemaining : 0);
+  const receivedDate = new Date();
 
   const intervalRef = useRef(); // Add a ref to store the interval id
 
   useEffect(() => {
     intervalRef.current = setInterval(() => {
-      setTimer((t) => t - 1);
+      setTimer(() => Math.round(data.pendingInfo.timeRemaining - (new Date() - receivedDate )/1000));
     }, 1000);
     return () => clearInterval(intervalRef.current);
   }, []);
