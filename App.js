@@ -1,5 +1,4 @@
-import * as Device from 'expo-device';
-import * as Notifications from 'expo-notifications';
+
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Text, View, Button, Platform } from 'react-native';
 
@@ -11,13 +10,7 @@ import Home from "./screens/Home";
 import Details from "./screens/Details";
 
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: false,
-    shouldSetBadge: false,
-  }),
-});
+
 
 const theme = {
   ...DefaultTheme,
@@ -31,30 +24,6 @@ const Stack = createStackNavigator();
 
 
 export default function App() {
-  const [expoPushToken, setExpoPushToken] = useState('');
-  const [notification, setNotification] = useState(false);
-  const notificationListener = useRef();
-  const responseListener = useRef();
-
-  useEffect(() => {
-    registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
-
-    // This listener is fired whenever a notification is received while the app is foregrounded
-    notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
-      setNotification(notification);
-    });
-
-    // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
-    responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
-      console.log(response);
-    });
-
-    return () => {
-      Notifications.removeNotificationSubscription(notificationListener.current);
-      Notifications.removeNotificationSubscription(responseListener.current);
-    };
-  }, []);
-
 
   const [loaded] = useFonts({
     InterBold: require("./assets/fonts/Inter-Bold.ttf"),
@@ -77,29 +46,28 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Details" component={Details} />
       </Stack.Navigator>
+      
+        {/* <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'space-around',
+        }}>
+        <Text>Your expo push token: {expoPushToken}</Text>
+        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+          <Text>Title: {notification && notification.request.content.title} </Text>
+          <Text>Body: {notification && notification.request.content.body}</Text>
+          <Text>Data: {notification && JSON.stringify(notification.request.content.data)}</Text>
+        </View>
+        <Button
+          title="Press to Send Notification"
+          onPress={async () => {
+            await sendPushNotification(expoPushToken);
+          }}
+        />
+      </View> */}
     </NavigationContainer>
 
-
-
-    // <View
-    //   style={{
-    //     flex: 1,
-    //     alignItems: 'center',
-    //     justifyContent: 'space-around',
-    //   }}>
-    //   <Text>Your expo push token: {expoPushToken}</Text>
-    //   <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-    //     <Text>Title: {notification && notification.request.content.title} </Text>
-    //     <Text>Body: {notification && notification.request.content.body}</Text>
-    //     <Text>Data: {notification && JSON.stringify(notification.request.content.data)}</Text>
-    //   </View>
-    //   <Button
-    //     title="Press to Send Notification"
-    //     onPress={async () => {
-    //       await sendPushNotification(expoPushToken);
-    //     }}
-    //   />
-    // </View>
   );
 }
 
@@ -110,7 +78,209 @@ async function sendPushNotification(expoPushToken) {
     sound: 'default',
     title: 'Original Title',
     body: 'And here is the body!',
-    data: { someData: 'goes here' },
+    data: {req: [
+      {
+        botName: "BOT 01",
+        assetName: "LUNA",
+        baseCurrency: "USDT",
+        exchangeName: "Binance",
+        profit: 2.3,
+        elapsedTime: "02h 22m",
+        pendingTrans: true,
+        historyicalRecord: true,
+        transHistory: [
+          {
+            id: "4",
+            type: "single",
+    
+            contract1: "buy",
+            position1: 2,
+            price1: 70.68,
+            time1:"1:50:21 PM",
+          },
+          {
+            id: "1",
+            type: "complete",
+    
+            contract1: "buy",
+            position1: 2,
+            price1: 70.68,
+            time1:"1:50:21 PM",
+    
+            contract2: "sell",
+            position2: 2,
+            price2: 72.68,
+            time2:"1:51:21 PM",
+          },
+          {
+            id: "2",
+            type: "rejected",
+    
+            contract1: "buy",
+            position1: 2,
+            price1: 70.68,
+            time1:"1:50:21 PM",
+          },
+          {
+            id: "3",
+            type: "complete",
+    
+            contract1: "sell",
+            position1: 3,
+            price1: 77.23,
+            time1:"12:10:01 PM",
+    
+            contract2: "buy",
+            position2: 3,
+            price2: 72.13,
+            time2: "01:00:59 PM"
+          }
+        ],
+    
+        pendingInfo:{
+          checklist: [
+            {indicator: "20 Moving Avarage", id: 1},
+            {indicator: "RSI", id: 2},
+            {indicator: "On-Balance Volume", id: 3},
+            {indicator: "Tailored", id: 4}
+          ],
+          timeRemaining: 39,
+        },
+    
+    
+        id: "NFT-01",
+      },
+      {
+        botName: "BOT 02",
+        assetName: "BTC",
+        baseCurrency: "USDT",
+        exchangeName: "BINANCE",
+        profit: -2.9,
+        elapsedTime: "01h 31m",
+        pendingTrans: false,
+        historyicalRecord: true,
+        transHistory: [
+          {
+            id: "1",
+    
+            contract1: "buy",
+            position1: 2,
+            price1: 70.68,
+            time1:"1:50:21 PM",
+    
+            type: "single"
+          },
+        ],
+    
+        pendingInfo: null,
+    
+        id: "NFT-02",
+      },
+      {
+        botName: "BOT 03",
+        assetName: "DOGE",
+        baseCurrency: "USDT",
+        exchangeName: "BINANCE",
+        profit: 3.6,
+        elapsedTime: "05h 12m",
+        pendingTrans: false,
+        historyicalRecord: true,
+        transHistory: [
+          {
+            id: "1",
+    
+            contract1: "buy",
+            position1: 2,
+            price1: 70.68,
+            time1:"1:50:21 PM",
+    
+            type: "single"
+          },
+          {
+            id: "2",
+    
+            contract1: "sell",
+            position1: 3,
+            price1: 77.23,
+            time1:"12:10:01 PM",
+    
+            contract2: "buy",
+            position2: 3,
+            price2: 72.13,
+            time2: "01:00:59 PM",
+    
+            type: "complete"
+          },
+        ],
+        
+        pendingInfo: null,
+    
+        id: "NFT-03",
+      },
+      {
+        botName: "BOT 04",
+        assetName: "eth",
+        baseCurrency: "USDT",
+        exchangeName: "BILO",
+        profit: -4.7,
+        elapsedTime: "1h31m",
+        pendingTrans: true,
+        historyicalRecord: true,
+        transHistory: [
+          {
+            id: "1",
+    
+            contract1: "buy",
+            position1: 2,
+            price1: 70.68,
+            time1:"1:50:21 PM",
+    
+            type: "single"
+    
+          },
+          {
+            id: "2",
+    
+            contract1: "sell",
+            position1: 3,
+            price1: 77.23,
+            time1:"12:10:01 PM",
+    
+            contract2: "buy",
+            position2: 3,
+            price2: 72.13,
+            time2: "01:00:59 PM",
+    
+            type: "complete"
+          },
+        ],
+    
+        pendingInfo:{
+          checklist: [
+            {indicator: "20 Moving Avarage", id: 1},
+            {indicator: "RSI", id: 2},
+            {indicator: "On-Balance Volume", id: 3}
+          ],
+          timeRemaining: 59
+        },
+    
+        id: "NFT-04",
+      },
+      {
+        botName: "BOT 05",
+        assetName: "eth",
+        baseCurrency: "USDT",
+        exchangeName: "BINANCE",
+        profit: 0,
+        elapsedTime: "1h31m",
+        pendingTrans: false,
+        historyicalRecord: false,
+        transHistory: [
+          null
+        ],
+        id: "NFT-05",
+      }
+    ]}
   };
 
   await fetch('https://exp.host/--/api/v2/push/send', {
@@ -124,33 +294,3 @@ async function sendPushNotification(expoPushToken) {
   });
 }
 
-async function registerForPushNotificationsAsync() {
-  let token;
-  if (Device.isDevice) {
-    const { status: existingStatus } = await Notifications.getPermissionsAsync();
-    let finalStatus = existingStatus;
-    if (existingStatus !== 'granted') {
-      const { status } = await Notifications.requestPermissionsAsync();
-      finalStatus = status;
-    }
-    if (finalStatus !== 'granted') {
-      alert('Failed to get push token for push notification!');
-      return;
-    }
-    token = (await Notifications.getExpoPushTokenAsync()).data;
-    console.log(token);
-  } else {
-    alert('Must use physical device for Push Notifications');
-  }
-
-  if (Platform.OS === 'android') {
-    Notifications.setNotificationChannelAsync('default', {
-      name: 'default',
-      importance: Notifications.AndroidImportance.MAX,
-      vibrationPattern: [0, 250, 250, 250],
-      lightColor: '#FF231F7C',
-    });
-  }
-
-  return token;
-}

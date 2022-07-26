@@ -28,9 +28,12 @@ const styles = StyleSheet.create({
 
 const NFTCard = ({data}) => {
   const navigation = useNavigation();
-  
+
   const [timer, setTimer] = useState(data.pendingTrans ? data.pendingInfo.timeRemaining : 0);
-  const receivedDate = new Date();
+  const [receivedDate, setReceivedDate] = useState(new Date());
+
+  {data.pendingTrans && console.log("current time " + receivedDate  + " " + data.botName)}
+  {data.pendingTrans && console.log("----------------------------")}
 
   const intervalRef = useRef(); // Add a ref to store the interval id
 

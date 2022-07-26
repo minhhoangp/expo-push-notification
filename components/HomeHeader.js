@@ -2,15 +2,13 @@ import { View, Text, TextInput, Image} from 'react-native';
 import React from 'react';
 import { COLORS, FONTS, SIZES, assets } from '../constants';
 
-const HomeHeader = ({ onSearch }) => {
+const HomeHeader = ({}) => {
   return (
     <View
       style={{
         padding: SIZES.font,
       }}
     >
-
-
       <View style={{ }}>
         <Text
           style={{

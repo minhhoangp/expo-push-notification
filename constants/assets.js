@@ -7,6 +7,7 @@ import BTC from "../assets/images/BTC.png";
 import DOGE from "../assets/images/DOGE.png";
 import LUNA from "../assets/images/LUNA.png";
 import tick from "../assets/images/tick.png"
+import tick2 from "../assets/images/tick2.png"
 
 import bg01 from "../assets/images/bg01.png"
 import bg02 from "../assets/images/bg02.png"
@@ -50,6 +51,7 @@ export default {
   DOGE,
   LUNA,
   tick,
+  tick2,
 
   bg01,
   bg02,
