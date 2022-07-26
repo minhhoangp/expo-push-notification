@@ -1,12 +1,55 @@
 import React, {useContext, useState, useRef, useEffect} from "react";
 import { View, Image, Text , StyleSheet} from "react-native";
 
-import { SIZES, FONTS, COLORS, SHADOWS, assets } from "../constants";
-import { ApprovePendButton, CircleButton } from './Button';
+import { SIZES, FONTS, COLORS, assets } from "../constants";
+import { ApprovePendButton } from './Button';
 
 import { PendingTransContext } from "../helper/Context";
 import { BlurView } from "expo-blur";
 
+const style = StyleSheet.create({
+    pendingWidget:{
+        padding: 15,
+        borderRadius: 10,
+
+        flexDirection: "row",
+        justifyContent: "space-between"
+    },
+
+    pendingContainer:{
+        borderRadius: 10,
+        overflow: "hidden",
+        marginBottom: SIZES.font,
+    },
+
+    botDetail:{
+        backgroundColor: 'FFF',
+        padding: 15,
+        borderRadius: 10
+    }, 
+
+    indicator:{
+        flexDirection: "row", 
+        margin: SIZES.xxs
+    },
+
+    tickIcon:{
+        width: 20, 
+        height: 20, 
+        backgroundColor: "#55BCF6",
+        opacity: 0.4, 
+        borderRadius: 5,
+    },
+
+    widgetTitle:{
+        fontFamily: FONTS.semiBold, 
+        fontSize: SIZES.medium, 
+        color: COLORS.white, 
+        marginBottom: SIZES.base,
+        marginTop: SIZES.small
+    }
+
+})
   
 export const PendingTrans = ({pendingStatus}) => {
     const {timer} = useContext(PendingTransContext)
@@ -205,50 +248,6 @@ export const BotDetailedInfo = ({botName, assetName, baseCurrency, exchangeName,
     )
 };
 
-const style = StyleSheet.create({
-    pendingWidget:{
-        padding: 15,
-        borderRadius: 10,
-
-        flexDirection: "row",
-        justifyContent: "space-between"
-    },
-
-    pendingContainer:{
-        borderRadius: 10,
-        overflow: "hidden",
-        marginBottom: SIZES.font,
-    },
-
-    botDetail:{
-        backgroundColor: 'FFF',
-        padding: 15,
-        borderRadius: 10
-    }, 
-
-    indicator:{
-        flexDirection: "row", 
-        margin: SIZES.xxs
-    },
-
-    tickIcon:{
-        width: 20, 
-        height: 20, 
-        backgroundColor: "#55BCF6",
-        opacity: 0.4, 
-        borderRadius: 5,
-    },
-
-    widgetTitle:{
-        fontFamily: FONTS.semiBold, 
-        fontSize: SIZES.medium, 
-        color: COLORS.white, 
-        marginBottom: SIZES.base,
-        marginTop: SIZES.small
-    }
-
-})
-
 export const IndicatorChecklist = ({checklist}) => {
     return  (
         <React.Fragment>
@@ -275,14 +274,6 @@ export const IndicatorChecklist = ({checklist}) => {
 
 }
 
-export const ExpireButton = () => {
-    return  (
-        <View>
-            <Text>EXPIRE</Text>
-        </View>
-    )
-}
-
 export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
 
     const [timer, setTimer] = useState(timeRemaining);
@@ -307,24 +298,18 @@ export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
 
     return (
         <React.Fragment>
-
             <Text style = {style.widgetTitle}>Pending Transaction</Text>
-
             <View style = {style.pendingContainer}>
                 <BlurView
                     blurType="light"
                     blurAmount={10}
                     reducedTransparencyFallbackColor="white"
                 >
-
                     <View style = {style.pendingWidget}>
-                        
                         <View>
                             <IndicatorChecklist checklist = {checklist}/>
                         </View>
-
                         <View style = {{flexDirection: 'column', justifyContent: 'space-between'}}>
-
                                 <View style= {{ borderRadius: SIZES.xs, overflow: "hidden" }}>
                                     <BlurView
                                         blurType="light"
@@ -350,7 +335,6 @@ export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
                                         </View>
                                     </BlurView>
                                 </View>
-                        
 
                             {timer >= 1 && <ApprovePendButton
                                 handlePress={() => console.log("hello")}

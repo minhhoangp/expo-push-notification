@@ -1,7 +1,6 @@
 import { View, Text, FlatList, StyleSheet } from 'react-native'
 import React from 'react'
-import { SIZES, FONTS, COLORS, SHADOWS, assets } from "../constants";
-
+import { SIZES, FONTS, COLORS } from "../constants";
 import { BlurView } from "expo-blur";
 
 const style = StyleSheet.create({
@@ -93,7 +92,6 @@ const style = StyleSheet.create({
   }
 })
 
-
 const Item = ({data}) => {
 
   var wrapperTextStyle1 = style.greenWrapper 
@@ -179,14 +177,6 @@ const TransactionHistory = ({transHistory}) => {
     <React.Fragment>
       
       <Text style = {style.widgetTitle}>Past Transactions</Text>
-
-      {/* <View style = {style.tableTitle}>
-        <Text style={style.historyText}>Time</Text>
-        <Text style={style.historyText}>Side</Text>
-        <Text style={style.historyText}>Price</Text>
-        <Text style={style.historyText}>Unit</Text>
-        <Text style={style.historyText}>Amount</Text>
-      </View> */}
 
       {<FlatList
         data={transHistory}

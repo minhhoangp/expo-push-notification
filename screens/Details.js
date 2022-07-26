@@ -1,13 +1,16 @@
-import React, {useContext} from "react";
-import { View, Text, SafeAreaView, Image, StatusBar, FlatList, StyleSheet} from "react-native";
+import React from "react";
+import { View, Text, SafeAreaView, Image, StyleSheet} from "react-native";
 import { ScrollView } from 'react-native-virtualized-view';
 
-import {COLORS, SIZES, SHADOWS, FONTS, assets} from '../constants';
-import {RectButton, DetailsDesc, TransactionHistory, FocusedStatusBar, CircleButton} from '../components';
-import {BotDetailedInfo, PendingWidget, PendingTrans} from '../components/SubInfo'
+import {COLORS, SIZES, FONTS, assets} from '../constants';
+import {TransactionHistory, CircleButton} from '../components';
+import {BotDetailedInfo, PendingWidget} from '../components'
 
-import { UserContext } from "../helper/Context";
-import { PendingTransContext } from "../helper/Context";
+const style = StyleSheet.create({
+  container:{
+    padding: SIZES.font,
+  }
+})
 
 const DetailsHeader = ({data, navigation}) => (
   <View style={{width:'100%', height:50}}>
@@ -30,13 +33,6 @@ const DetailsHeader = ({data, navigation}) => (
 
   </View>
 )
-
-const style = StyleSheet.create({
-  container:{
-    padding: SIZES.font,
-  }
-})
-
 
 const Details = ({route, navigation}) => {
   const {data} = route.params;

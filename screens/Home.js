@@ -1,7 +1,7 @@
-import React, { useState, useRef, useContext, useEffect} from "react";
-import { NFTCard, HomeHeader, FocusedStatusBar, TEST } from "../components";
+import React, { useState, useRef, useEffect} from "react";
+import { BotCard, HomeHeader } from "../components";
 
-import { COLORS, NFTData, assets, FONTS, SIZES,} from "../constants";
+import { COLORS, assets, FONTS, SIZES,} from "../constants";
 import { View, Text, SafeAreaView, ScrollView, Image} from "react-native";
 
 import * as Device from 'expo-device';
@@ -69,7 +69,7 @@ const Home = () => {
                 
                 
                 {notification && (notification.request.content.data.req).map(item=>{
-                    return  <NFTCard data = {item} key = {item.id}/>
+                    return  <BotCard data = {item} key = {item.id}/>
                 })}
 
                 {!notification && <BlankNotiScreen/>}

@@ -1,6 +1,6 @@
-import { View, Text, TextInput, Image} from 'react-native';
+import { View, Text } from 'react-native';
 import React from 'react';
-import { COLORS, FONTS, SIZES, assets } from '../constants';
+import { COLORS, FONTS, SIZES } from '../constants';
 
 const HomeHeader = ({}) => {
   return (

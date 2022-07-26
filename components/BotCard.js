@@ -1,15 +1,12 @@
-import { View, Image, Text, StyleSheet } from 'react-native';
-import React, { useState, useRef, useEffect, useContext, createContext } from 'react';
-
+import { View, StyleSheet } from 'react-native';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { NavigationContext} from '@react-navigation/native';
-
-import { COLORS, SIZES, SHADOWS, assets } from '../constants';
-import { RectButton, CircleButton } from './Button';
-import { BotInfo, SubInfo, PendingTrans } from './SubInfo';
-
-import { PendingTransContext } from '../helper/Context';
 import { BlurView } from "expo-blur";
+
+import { SIZES, SHADOWS  } from '../constants';
+import { RectButton } from './Button';
+import { BotInfo, PendingTrans } from './SubInfo';
+import { PendingTransContext } from '../helper/Context';
 
 const styles = StyleSheet.create({
   container: {
@@ -25,15 +22,11 @@ const styles = StyleSheet.create({
   }
 });
 
-
-const NFTCard = ({data}) => {
+const BotCard = ({data}) => {
   const navigation = useNavigation();
 
   const [timer, setTimer] = useState(data.pendingTrans ? data.pendingInfo.timeRemaining : 0);
   const [receivedDate, setReceivedDate] = useState(new Date());
-
-  {data.pendingTrans && console.log("current time " + receivedDate  + " " + data.botName)}
-  {data.pendingTrans && console.log("----------------------------")}
 
   const intervalRef = useRef(); // Add a ref to store the interval id
 
@@ -103,4 +96,4 @@ const NFTCard = ({data}) => {
   )
 }
 
-export default NFTCard
+export default BotCard
