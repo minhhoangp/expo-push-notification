@@ -108,7 +108,6 @@ export const BotName = ({botName}) => {
             fontFamily: FONTS.regular,
             fontSize: SIZES.medium,
             color: COLORS.white,
-    
         }}>
             {botName}
         </Text>

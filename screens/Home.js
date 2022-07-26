@@ -67,7 +67,8 @@ const Home = () => {
 
                 <HomeHeader/>
                 
-                
+                {notification && console.log(notification.request.content.data)}
+
                 {notification && (notification.request.content.data.req).map(item=>{
                     return  <BotCard data = {item} key = {item.id}/>
                 })}
