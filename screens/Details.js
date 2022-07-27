@@ -55,7 +55,7 @@ const Details = ({route, navigation}) => {
               flex: 1,
               resizeMode: 'contain'
           }}
-          source={ assets.bg07 } />   
+          source={ assets.bg05 } />   
       </View>
 
       <ScrollView style = {style.container}>

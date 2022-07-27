@@ -1,14 +1,3 @@
-<div id="top"></div>
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-<br />
-
 <!-- ABOUT THE PROJECT -->
 ## Trading Alert
 Trading bots are meant to function without human supervision; however, a "work in progress" bot may act aggressively and go on a losing streak. Trading Alert was created to allow traders to closely monitor the performance of their bots at any time. A push notification will be sent to user's mobile device every time the trading bot spots a trading opportunity that waits on user's approval to execute the trade. 

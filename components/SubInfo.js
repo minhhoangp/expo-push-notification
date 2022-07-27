@@ -291,6 +291,7 @@ export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
     useEffect(() => {
       if (timer <= 0) {
         clearInterval(intervalRef.current);
+        setTimer(0);
       }
     }, [timer]);
 

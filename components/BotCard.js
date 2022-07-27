@@ -26,7 +26,7 @@ const BotCard = ({data}) => {
   const navigation = useNavigation();
 
   const [timer, setTimer] = useState(data.pendingTrans ? data.pendingInfo.timeRemaining : 0);
-  const [receivedDate, setReceivedDate] = useState(new Date());
+  const receivedDate = new Date();
 
   const intervalRef = useRef(); // Add a ref to store the interval id
 
@@ -41,6 +41,7 @@ const BotCard = ({data}) => {
   useEffect(() => {
     if (timer <= 0) {
       clearInterval(intervalRef.current);
+      setTimer(0);
     }
   }, [timer]);
 

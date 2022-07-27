@@ -17,10 +17,6 @@ import bg05 from "../assets/images/bg05.png"
 import bg06 from "../assets/images/bg06.png"
 import bg07 from "../assets/images/bg07.png"
 import bg08 from "../assets/images/bg08.png"
-import bg09 from "../assets/images/bg09.png"
-import bg10 from "../assets/images/bg10.png"
-import bg11 from "../assets/images/bg11.png"
-import bg12 from "../assets/images/bg12.png"
 
 import left from "../assets/icons/left.png";
 
@@ -42,10 +38,6 @@ export default {
   bg06,
   bg07,
   bg08,
-  bg09,
-  bg10,
-  bg11,
-  bg12,
 
   left
 };

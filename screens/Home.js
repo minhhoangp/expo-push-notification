@@ -18,7 +18,9 @@ Notifications.setNotificationHandler({
 
 const Home = () => {
     const [expoPushToken, setExpoPushToken] = useState('');
+
     const [notification, setNotification] = useState(false);
+
     const notificationListener = useRef();
     const responseListener = useRef();
 
@@ -32,7 +34,7 @@ const Home = () => {
     
         // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
         responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
-        //   console.log(response);
+          setNotification(response.notification);
         });
     
         return () => {
@@ -40,7 +42,6 @@ const Home = () => {
           Notifications.removeNotificationSubscription(responseListener.current);
         };
       }, []);
-
 
     return (
         <SafeAreaView style={{flex : 1}}>
@@ -60,20 +61,21 @@ const Home = () => {
                         flex: 1,
                         resizeMode: 'contain'
                     }}
-                source={ assets.bg09} />   
+                source={ assets.bg08} />   
             </View>
 
             <ScrollView>
 
                 <HomeHeader/>
                 
-                {notification && console.log(notification.request.content.data)}
+                {notification 
+                  ? (notification.request.content.data.req).map(item=>{
+                      return  <BotCard data = {item} key = {item.id}/>
+                    })
+                  : <BlankNotiScreen/>
+                } 
 
-                {notification && (notification.request.content.data.req).map(item=>{
-                    return  <BotCard data = {item} key = {item.id}/>
-                })}
 
-                {!notification && <BlankNotiScreen/>}
 
             </ScrollView>
 
