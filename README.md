@@ -1,7 +1,8 @@
 
 ## Trading Alert
-
-![2463835591160709341_AdobeExpress](https://user-images.githubusercontent.com/88297894/181249150-5ee70d32-9916-4f91-a0ae-735864e49447.gif)
+<div align="center">
+   ![ezgif com-gif-maker](https://user-images.githubusercontent.com/88297894/181256562-9a4bb1a8-e82c-4129-9483-a13f15ee7346.gif)
+</div>
 
 Trading bots are meant to function without human supervision; however, a "work in progress" bot may act aggressively and go on a losing streak. Trading Alert was created to allow traders to closely monitor the performance of their bots at any time. A push notification will be sent to user's mobile device every time the trading bot spots a trading opportunity that waits on user's approval to execute the trade. 
 
@@ -54,6 +55,7 @@ Use your mobile device with Expo application installed to scan the QR code on yo
 
 Use `Node server.js` to send dummy push notifications to the mobile device. 
 
+> **_NOTE:_**: user needs to tap on the notification instead of manually opening/switching back to the application from background as Expo's event listener for background activities is only fired from user tapping the notification.
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -61,6 +63,7 @@ Use `Node server.js` to send dummy push notifications to the mobile device.
 - [x] Implement push notifications 
 - [x] Show past transactions made by trading bots
 - [ ] Send POST request from mobile device to server using Github  
+- [ ] UI improvement (eg: fetch new data while backgrounded without notification interection, ..)
 
 
 <!-- CONTACT -->
