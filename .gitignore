@@ -9,6 +9,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+configIGNORE.js
 
 # macOS
 .DS_Store

@@ -2,10 +2,12 @@ import React, { useState, useRef, useEffect} from "react";
 import { BotCard, HomeHeader } from "../components";
 
 import { COLORS, assets, FONTS, SIZES,} from "../constants";
-import { View, Text, SafeAreaView, ScrollView, Image} from "react-native";
+import { View, Text, SafeAreaView, ScrollView, Image, Button} from "react-native";
 
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
+
+import { getFirestore, setDoc, doc } from 'firebase/firestore';
 
 Notifications.setNotificationHandler({
     handleNotification: async () => ({
@@ -17,6 +19,17 @@ Notifications.setNotificationHandler({
 
 
 const Home = () => {
+
+    const senDataFbase = async () => {
+      const firestore = getFirestore();
+    
+      await setDoc(doc(firestore, "users", "user_3"), {
+        employment: "plumber",
+        outfitColor: "red",
+        specialAttack: "fireball"
+      });
+    }
+
     const [expoPushToken, setExpoPushToken] = useState('');
 
     const [notification, setNotification] = useState(false);
@@ -75,7 +88,12 @@ const Home = () => {
                   : <BlankNotiScreen/>
                 } 
 
-
+                <Button
+                  title="Press to Send"
+                  onPress={async () => {
+                    await senDataFbase();
+                  }}
+                />
 
             </ScrollView>
 

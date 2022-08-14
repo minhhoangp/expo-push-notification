@@ -9,7 +9,8 @@ import { useFonts } from "expo-font";
 import Home from "./screens/Home";
 import Details from "./screens/Details";
 
-
+import { initializeApp } from 'firebase/app';
+import {firebaseConfig} from './configIGNORE.js';
 
 
 const theme = {
@@ -35,6 +36,9 @@ export default function App() {
 
   if (!loaded) return null;
 
+  initializeApp(firebaseConfig);
+
+
   return (
     <NavigationContainer theme={theme}>
       <Stack.Navigator
@@ -44,7 +48,7 @@ export default function App() {
         initialRouteName="Home"
       >
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Details" component={Details} />
+        <Stack.Screen name="Details" component={Details} />          
       </Stack.Navigator>
       
         {/* <View
