@@ -75,7 +75,7 @@ const Details = ({route, navigation}) => {
         <PendingWidget 
           timeRemaining = {route.params.timer}
           checklist = {data.pendingInfo.checklist}
-          transInfo = {data.exchangeName}
+          pendingID = {data.pendingInfo.id}
         />}
 
 

@@ -65,8 +65,8 @@ const req = [
           {indicator: "Tailored", id: 4}
         ],
         timeRemaining: 39,
+        id: 1
       },
-  
   
       id: 1,
     },
@@ -181,7 +181,8 @@ const req = [
           {indicator: "RSI", id: 2},
           {indicator: "On-Balance Volume", id: 3}
         ],
-        timeRemaining: 59
+        timeRemaining: 59,
+        id: 2
       },
   
       id: 4,
@@ -198,6 +199,7 @@ const req = [
       transHistory: [
         null
       ],
+      pendingInfo: null,
       id: 5,
     }
   ]

@@ -7,6 +7,8 @@ import { ApprovePendButton } from './Button';
 import { PendingTransContext } from "../helper/Context";
 import { BlurView } from "expo-blur";
 
+import { getFirestore, setDoc, doc } from 'firebase/firestore';
+
 const style = StyleSheet.create({
     pendingWidget:{
         padding: 15,
@@ -273,7 +275,18 @@ export const IndicatorChecklist = ({checklist}) => {
 
 }
 
-export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
+export const PendingWidget = ({timeRemaining, checklist, pendingID}) => {
+
+    const senDataFbase = async (id) => {
+        const firestore = getFirestore();
+      
+        await setDoc(doc(firestore, "transactions", "trans_info"), {
+            pendTransID: id
+        });
+
+        console.log("approve id: " + id)
+    }
+  
 
     const [timer, setTimer] = useState(timeRemaining);
 
@@ -336,8 +349,11 @@ export const PendingWidget = ({timeRemaining, checklist, transInfo}) => {
                                     </BlurView>
                                 </View>
 
-                            {timer >= 1 && <ApprovePendButton
-                                handlePress={() => console.log("hello")}
+                            {timer >= 1 && 
+                            <ApprovePendButton
+                                handlePress={async () => { 
+                                    console.log("id is " + pendingID)
+                                    await senDataFbase(pendingID);}}
                             />}
         
                         </View>
